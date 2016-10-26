@@ -1,0 +1,6 @@
+Debug/*
+fssim/Debug/*
+fssim//ipch/*
+.vs/*
+fssim.VC.*
+ipch/*
