@@ -71,18 +71,19 @@ Array* createArray()
 
 void push_back(Array* words, char* s)
 {
-    words->size++;
-    char** tmp = (char**)malloc(sizeof(char*)*words->size);
-    if (words->size > 1)
+    char** tmp = (char**)calloc(words->size+1, sizeof(char*));
+    if (words->string)
     {
-        memcpy(tmp, words->string, sizeof(char*)*(words->size - 1));
+        for (int i = 0; i < words->size; i++)
+            tmp[i] = words->string[i];
+        //memcpy(tmp, words->string, sizeof(char*)*(words->size));
         free(words->string);
+        words->string = nullptr;
     }
     words->string = tmp;
-    char*string = (char*)malloc(sizeof(char) * (strlen(s)+1));
-    memset(string, 0, strlen(s) + 1);
+    char*string = (char*)calloc((strlen(s)+1), sizeof(char));
     strcpy(string, s);
-    words->string[words->size - 1] = string;
+    words->string[words->size++] = string;
 }
 
 Array* toArray(char* string)
@@ -140,7 +141,7 @@ void removeNode(Node* curr)
     for (int i = 0; i < curr->childs->size; i++)
         removeNode(curr->childs->arr[i]);
 
-    //free(curr->name);
+    free(curr->childs->arr);
     free(curr->childs);
     free(curr);
 }
@@ -151,31 +152,39 @@ void pop_front(Array* words)
         return;
 
     free(words->string[0]);
+    words->string[0] = nullptr;
     if (--words->size)
-        memcpy(words->string, words->string + 1, sizeof(char*)*words->size);
+    {
+        for (int i = 1; i < words->size+1; i++)
+            words->string[i - 1] = words->string[i];
+    }
     else
+    {
+        free(words->string);
         words->string = nullptr;
+    }
 }
 
 void addChild(Childs* childs, Node * node)
 {
-    childs->size++;
-    Node** tmp = (Node**)malloc(sizeof(Node*)*childs->size);
-    if (childs->size > 1)
+    Node** tmp = (Node**)calloc(childs->size+1, sizeof(Node*));
+    if (childs->size > 0)
     {
-        memcpy(tmp, childs->arr, sizeof(Node*)*(childs->size - 1));
+        for (int i = 0; i < childs->size; i++)
+            tmp[i] = childs->arr[i];
         free(childs->arr);
+        childs->arr = nullptr;
     }
     childs->arr = tmp;
-    childs->arr[childs->size-1] = node;
+    childs->arr[childs->size++] = node;
 }
 
 void removeChild(Childs* childs, int index)
 {
-    if (index != --childs->size)
-        memcpy(childs->arr + index, childs->arr + index + 1, childs->size*sizeof(Node*));
+    for (int i = index + 1; i < childs->size; i++)
+        childs->arr[i - 1] = childs->arr[i];
 
-    if (!childs->size)
+    if (--childs->size == 0)
     {
         free(childs->arr);
         childs->arr = nullptr;
@@ -186,7 +195,7 @@ void insert(Node* curr,Array* words)
 {
     if (!words->size)
         return;
-
+    
     for (int i = 0; i < curr->childs->size; i++)
     {
         Node* c = curr->childs->arr[i];
@@ -205,23 +214,24 @@ void insert(Node* curr,Array* words)
 
 void deleteWords(Array* words)
 {
+    if (!words)
+        return;
+
     for (int i = 0; i < words->size; i++)
         free(words->string[i]);
+    if (words->string)
+        free(words->string);
     free(words);
 }
 
 char * append(char* string, char c)
 {
     if (!string)
-    {
-        string = (char*)malloc(sizeof(char) * 2);
-        memset(string, 0, sizeof(char) * 2);
-    }
+        string = (char*)calloc(2, sizeof(char));
     else
     {
-        char* tmp = (char*)malloc(sizeof(char) * strlen(string) + 2);
-        memcpy(tmp, string, strlen(string) + 1);
-        tmp[strlen(string) + 1] = 0;
+        char* tmp = (char*)calloc(strlen(string) + 2, sizeof(char));
+        memcpy(tmp, string, strlen(string));
         free(string);
         string = tmp;
     }
@@ -231,7 +241,8 @@ char * append(char* string, char c)
 
 char * clear(char* string)
 {
-    free(string);
+    if (string)
+        free(string);
     return nullptr;
 }
 
@@ -303,7 +314,6 @@ Node* getNode(char* path, bool onlyDir = true, bool currenWhenNoPath = true)
     Node * node;
     if (path[0] == '/')
     {
-        //pop_front(words);
         node = findNode(root, words, onlyDir);
     }
     else
@@ -398,8 +408,7 @@ void mvcp(char* firstArg, char* secondArg, void function(Node* first, Node* seco
 
 
 void mv(Node * first, Node* second)
-{
-    
+{    
     addChild(second->childs, first);
     removeChild(first->parent->childs, findChild(first->parent->childs, first));
     first->parent = second;
@@ -511,6 +520,8 @@ void parseCommand(char* line)
         if (args[i])
             clear(args[i]);
     }
+
+    free(args);
     
 }
 
@@ -534,6 +545,7 @@ void load(FILE* in, void(function)(char*))
         else
             line = append(line, c);
     }
+    line = clear(line);
 }
 
 int main(int nr, char** args)
@@ -561,10 +573,6 @@ int main(int nr, char** args)
     root = createNode("/");
     current = root;
     load(fs, &processFilesystem);
-    removeNode(root);
-    fclose(fs);
-    fclose(commands);
-    return 0;
     fclose(fs);
     load(commands, &parseCommand);
     fclose(commands);
