@@ -1,168 +1,418 @@
-// fssim.cpp : Defines the entry point for the console application.
-//
-#include <string>
-#include <deque>
-#include <vector>
-#include <iostream>
-#include <fstream>
-#include <sstream>
+#include <stdio.h>
+#include <malloc.h>
+#include <string.h>
+#include <stdlib.h>
 
-enum eType
+#pragma warning(disable: 4996) // _CRT_SECURE_NO_WARNINGS
+#define nullptr 0
+struct Node;
+struct Childs
 {
-    FIL = 0,
-    DIR
+    int size;
+    Node** arr;
 };
 
-std::deque<std::string> toVector(std::string string)
+struct Node
 {
-    std::string s;
-    std::deque<std::string> words;
-    for (int i = 0; i < string.length(); i++)
-    {
-        s += string[i];
-        if (string[i] == '/')
-        {
-            words.push_back(s);
-            s.clear();
-        }
-    }
-    if (!s.empty())
-        words.push_back(s);
-
-    return words;
-}
-
-class Node
-{
-public:
-    Node(std::string name, Node* parent = nullptr)
-    {
-        _name = name;
-        _parent = parent ? parent : this;
-        _typ = (eType)(name[name.length() - 1] == '/');
-    }
-
-    void insert(std::deque<std::string> words)
-    {
-        if (words.empty())
-            return;
-
-        for (auto c : childs)
-        {
-            if (c->_name == words[0])
-            {
-                words.pop_front();
-                c->insert(words);
-                return;
-            }
-        }
-        Node* n = new Node(words[0], this);
-        childs.push_back(n);
-        words.pop_front();
-        n->insert(words);
-    }
-
-    eType _typ;
-    std::string _name;
-    Node* _parent;
-    std::vector<Node*> childs;
-
-
+    char name[256];
+    Node* parent;
+    Childs* childs;
 };
 
-Node* load(std::ifstream& in)
+struct Array
 {
-    Node* root = new Node("/");
-    std::string line;
-    while (std::getline(in, line))
-    {
-        std::deque<std::string> words;
-        words = toVector(line);
-
-        if (!words.empty() && words[0] == "/")
-            words.pop_front();
-
-        root->insert(words);
-    }
-
-    return root;
-}
-
-bool isDir(Node * node)
-{
-    return node->_name[node->_name.length() - 1] == '/';
-}
+    int size;
+    char** string;
+};
 
 Node* root;
 Node * current;
 
-Node * findNode(Node * curr, std::deque<std::string>& words, bool onlyDir = true)
+
+void print(Node * node, bool last = true)
 {
-    if (words.empty())
+    if (node->parent != node)
+        print(node->parent, false);
+    printf("%s", node->name);
+
+    if (last)
+        printf("\n");
+}
+
+
+void errNoArgs()
+{
+    printf("ERROR not enough arguments\n");
+}
+void errNoPath()
+{
+    printf("ERROR path does not exist\n");
+}
+void errNotDir()
+{
+    printf("ERROR target is not a directory\n");
+}
+void errNoSrcFile()
+{
+    printf("ERROR source file not found\n");
+}
+void errSrcDir()
+{
+    printf("ERROR source is directory\n");
+}
+
+Array* createArray()
+{
+    Array* arr = (Array*)malloc(sizeof(Array));
+    arr->size = 0;
+    arr->string = nullptr;
+    return arr;
+}
+
+void push_back(Array* words, char* s)
+{
+    words->size++;
+    char** tmp = (char**)malloc(sizeof(char*)*words->size);
+    if (words->size > 1)
+    {
+        memcpy(tmp, words->string, sizeof(char*)*(words->size - 1));
+        free(words->string);
+    }
+    words->string = tmp;
+    char*string = (char*)malloc(sizeof(char) * (strlen(s)+1));
+    memset(string, 0, strlen(s) + 1);
+    strcpy(string, s);
+    words->string[words->size - 1] = string;
+}
+
+Array* toArray(char* string)
+{
+    char s[256];
+    int curr = 0;
+    memset(s, 0, sizeof(s));
+    Array* words = createArray();
+    for (int i = 0; i < (int)strlen(string); i++)
+    {
+        if (curr == 256)
+        {
+            memset(s, 0, sizeof(s));
+            curr = 0;
+        }
+
+        s[curr++] = string[i];
+        if (string[i] == '/')
+        {
+            if (curr != 1)
+                push_back(words,s);
+            memset(s, 0, sizeof(s));
+            curr = 0;
+        }
+    }
+    if (strlen(s))
+        push_back(words,s);
+
+    return words;
+}
+
+Childs* createChilds()
+{
+    Childs* childs = (Childs*)malloc(sizeof(Childs));
+    childs->size = 0;
+    childs->arr = nullptr;
+    return childs;
+}
+
+Node * createNode(char name[256], Node* parent = nullptr)
+{
+    Node* node = (Node*)malloc(sizeof(Node));
+    node->parent = parent ? parent : node;
+    memset(node->name, 0, 256);
+    strcpy(node->name, name);
+    node->childs = createChilds();
+    return node;
+}
+
+void removeNode(Node* curr)
+{
+    if (!curr)
+        return;
+
+    for (int i = 0; i < curr->childs->size; i++)
+        removeNode(curr->childs->arr[i]);
+
+    //free(curr->name);
+    free(curr->childs);
+    free(curr);
+}
+
+void pop_front(Array* words)
+{
+    if (words->size == 0)
+        return;
+
+    free(words->string[0]);
+    if (--words->size)
+        memcpy(words->string, words->string + 1, sizeof(char*)*words->size);
+    else
+        words->string = nullptr;
+}
+
+void addChild(Childs* childs, Node * node)
+{
+    childs->size++;
+    Node** tmp = (Node**)malloc(sizeof(Node*)*childs->size);
+    if (childs->size > 1)
+    {
+        memcpy(tmp, childs->arr, sizeof(Node*)*(childs->size - 1));
+        free(childs->arr);
+    }
+    childs->arr = tmp;
+    childs->arr[childs->size-1] = node;
+}
+
+void removeChild(Childs* childs, int index)
+{
+    if (index != --childs->size)
+        memcpy(childs->arr + index, childs->arr + index + 1, childs->size*sizeof(Node*));
+
+    if (!childs->size)
+    {
+        free(childs->arr);
+        childs->arr = nullptr;
+    }
+}
+
+void insert(Node* curr,Array* words)
+{
+    if (!words->size)
+        return;
+
+    for (int i = 0; i < curr->childs->size; i++)
+    {
+        Node* c = curr->childs->arr[i];
+        if (strcmp(c->name, words->string[0]) == 0)
+        {
+            pop_front(words);
+            insert(c,words);
+            return;
+        }
+    }
+    Node* n = createNode(words->string[0], curr);
+    addChild(curr->childs,n);
+    pop_front(words);
+    insert(n,words);
+}
+
+void deleteWords(Array* words)
+{
+    for (int i = 0; i < words->size; i++)
+        free(words->string[i]);
+    free(words);
+}
+
+char * append(char* string, char c)
+{
+    if (!string)
+    {
+        string = (char*)malloc(sizeof(char) * 2);
+        memset(string, 0, sizeof(char) * 2);
+    }
+    else
+    {
+        char* tmp = (char*)malloc(sizeof(char) * strlen(string) + 2);
+        memcpy(tmp, string, strlen(string) + 1);
+        tmp[strlen(string) + 1] = 0;
+        free(string);
+        string = tmp;
+    }
+    string[strlen(string)] = c;
+    return string;
+}
+
+char * clear(char* string)
+{
+    free(string);
+    return nullptr;
+}
+
+
+void processFilesystem(char* line)
+{
+    Array* words = toArray(line);
+    if (words->size && strcmp(words->string[0], "/") == 0)
+        pop_front(words);
+
+    insert(root, words);
+    deleteWords(words);
+}
+
+bool isDir(Node * node)
+{
+    return node->name[strlen(node->name) - 1] == '/';
+}
+
+Node * findNode(Node * curr, Array* words, bool onlyDir = true)
+{
+    if (!words->size)
         return curr;
 
     if (onlyDir && !isDir(curr))
         return curr;
 
-    std::string currString = words[0];
-    words.pop_front();
-    while (currString == "./" || currString == ".")
+    char* currString = (char*)calloc(strlen(words->string[0])+1,sizeof(char));
+    strcpy(currString, words->string[0]);
+    pop_front(words);
+    while (strcmp(currString,"./") == 0 || strcmp(currString, ".") == 0)
     {
-        if (words.empty())
+        if (!words->size)
+        {
+            free(currString);
             return curr;
+        }
 
-        currString = words[0];
-        words.pop_front();
+        currString = words->string[0];
+        pop_front(words);
     }
 
-    if (currString == "../" || currString == "..")
-        return findNode(curr->_parent, words);
-
-    for (Node* c : curr->childs)
+    if (strcmp(currString, "../") == 0 || strcmp(currString, "..") == 0)
     {
-        if (c->_name == currString || c->_name == (currString+"/"))
-            return findNode(c, words);
+        free(currString);
+        return findNode(curr->parent, words, onlyDir);
     }
 
-    return nullptr;
-    
+    for(int i = 0; i < curr->childs->size; i++)
+    {
+        Node* c = curr->childs->arr[i];
+        if (strcmp(c->name, currString) == 0)
+        {
+            free(currString);
+            return findNode(c, words, onlyDir);
+        }
+    }
 
+    free(currString);
+    return nullptr;
 }
 
-Node* cd(std::string path)
+Node* getNode(char* path, bool onlyDir = true, bool currenWhenNoPath = true)
 {
-    std::deque<std::string> words = toVector(path);
+    if (currenWhenNoPath && !path)
+        return current;
+
+    Array* words = toArray(path);
+    Node * node;
     if (path[0] == '/')
     {
-        words.pop_front();
-        return findNode(root, words);
+        //pop_front(words);
+        node = findNode(root, words, onlyDir);
     }
     else
     {
-        return findNode(current, words);
+        node = findNode(current, words, onlyDir);
     }
+
+    deleteWords(words);
+    return node;
 }
 
-std::string pwd(Node* curr)
+void ls(char* path)
 {
-    std::string s;
-    if (curr->_parent && curr->_parent != curr)
-        s = pwd(curr->_parent);
-    s += curr->_name;
-
-    return s;
+    Node* curr = getNode(path, false);
+    if (!curr)
+    {
+        errNoPath();
+        return;
+    }
+    if (!isDir(curr))
+        print(curr);
+    else
+        for (int i = 0; i < curr->childs->size; i++)
+            print(curr->childs->arr[i]);
+}
+void pwd()
+{
+    print(current);
 }
 
-void ls(Node* curr)
+void cd(char* path)
 {
-    std::string s;
-    for (auto n : curr->childs)
-        std::cout << pwd(curr) << n->_name << std::endl;
+    if (!strlen(path))
+    {
+        errNoArgs();
+        return;
+    }
+
+    Node * node = getNode(path);
+    if (!node)
+        errNoPath();
+    else if (!isDir(node))
+        errNotDir();
+    else
+        current = node;
+    
 }
 
-bool checkName(std::string name, std::string search)
+int findChild(Childs* childs, Node* node)
 {
-    for (int i = 0; i < search.length(); )
+    for (int i = 0; i < childs->size; i++)
+    {
+        Node * c = childs->arr[i];
+        if (strcmp(c->name, node->name) == 0)
+            return i;
+    }
+    return childs->size;
+}
+
+void mvcp(char* firstArg, char* secondArg, void function(Node* first, Node* second))
+{
+    if (strlen(firstArg) == 0)
+    {
+        errNoArgs();
+        return;
+    }
+
+    Node* first = getNode(firstArg, false, false);
+    Node* second = getNode(secondArg, false);
+
+    if (!first)
+    {
+        errNoSrcFile();
+        return;
+    }
+    else if (isDir(first))
+    {
+        errSrcDir();
+        return;
+    }
+
+    int i = findChild(second->childs, first);
+    if (i < second->childs->size)
+    {
+        Node* removed = second->childs->arr[i];
+        removeChild(second->childs, i);
+        removeNode(removed);
+    }
+
+    function(first, second);
+}
+
+
+void mv(Node * first, Node* second)
+{
+    
+    addChild(second->childs, first);
+    removeChild(first->parent->childs, findChild(first->parent->childs, first));
+    first->parent = second;
+}
+
+void cp(Node * first, Node* second)
+{
+    addChild(second->childs, createNode(first->name, second));
+}
+
+bool checkName(char name[256], char* search)
+{
+    for (int i = 0; i < (int)strlen(search); )
     {
         if (name[i] == search[i])
         {
@@ -171,8 +421,8 @@ bool checkName(std::string name, std::string search)
         }
         else if (search[i] == '*')
         {
-            for (int j = i + 1; j < name.length(); j++)
-                if (checkName(name.c_str() + j, search.c_str() + i + 1))
+            for (int j = i + 1; j < (int)strlen(name); j++)
+                if (checkName(name + j, search + i + 1))
                     return true;
             return false;
         }
@@ -182,171 +432,146 @@ bool checkName(std::string name, std::string search)
     return true;
 }
 
-void find(Node* curr, std::string search)
+void _find(Node* curr, char* search)
 {
-    if (!isDir(curr) && checkName(curr->_name, search))
-        std::cout << pwd(curr) << std::endl;
-    for (auto n : curr->childs)
-        find(n, search);
+    if (!isDir(curr) && checkName(curr->name, search))
+        print(curr);
+
+    for (int i = 0; i < curr->childs->size; i++)
+    {
+        Node* n = curr->childs->arr[i];
+        _find(n, search);
+    }
 }
 
-int main()
+void find(char* firstArg, char* secondArg)
 {
-    std::ifstream myfile("fs.txt");
-    if (myfile.is_open())
-    {
-        root = load(myfile);
-        current = root;
-        myfile.close();
-    }
+    Node* node = getNode(secondArg);
+    if (!node)
+        errNoPath();
     else
-        return 1;
+        _find(node, firstArg);
+}
 
-    std::string line;
-    while (std::getline(std::cin, line))
+void processCommand(char * command, char* firstArg, char* secondArg)
+{
+    if (command)
+        printf("$%s", command);
+    else
+        return;
+    if (firstArg)
+        printf(" %s", firstArg);
+    if (secondArg)
+        printf(" %s", secondArg);
+    printf("\n");
+
+    if (strcmp(command, "pwd") == 0)
+        pwd();
+    else if (strcmp(command, "cd") == 0)
+        cd(firstArg);
+    else if (strcmp(command, "ls") == 0)
+        ls(firstArg);
+    else if (strcmp(command, "mv") == 0)
+        mvcp(firstArg,secondArg,&mv);
+    else if (strcmp(command, "cp") == 0)
+        mvcp(firstArg, secondArg, &cp);
+    else if (strcmp(command, "find") == 0)
+        find(firstArg, secondArg);
+    else
+        printf("ERROR unknown command\n");
+}
+
+void parseCommand(char* line)
+{
+    char** args = (char**)malloc(sizeof(char*) * 3);
+    for (int i = 0; i < 3; i++)
+        args[i] = nullptr;
+
+    int loaded = -1;
+    bool string = false;
+    for (int i = 0; i < (int)strlen(line); i++)
     {
-        std::stringstream ss(line);
-        std::string command;
-        std::string firstArg;
-        std::string secondArg;
-        ss >> command >> firstArg >> secondArg;
-
-        Node * first = nullptr;
-        Node * second = nullptr;
-        if (!firstArg.empty())
-            first = cd(firstArg);
-        if (!secondArg.empty())
-            second = cd(secondArg);
-        
-        std::cout << "$" << command;
-        if (!firstArg.empty())
-            std::cout << " " << firstArg;
-        if (!secondArg.empty())
-            std::cout << " " << secondArg;
-        std::cout << std::endl;
-
-        if (command == "cd")
+        if (line[i] > ' ')
         {
-            if (firstArg.empty())
+            if (!string)
             {
-                std::cout << "ERROR not enough arguments" << std::endl;
-                continue;
+                loaded++;
+                string = true;
             }
-            if (!first)
-                std::cout << "ERROR path does not exist" << std::endl;
-            else if (!isDir(first))
-                std::cout << "ERROR target is not a directory" << std::endl;
-            else
-                current = first;
-        }
-        else if (command == "ls")
-        {
-            if (!firstArg.empty())
-            {
-                if (!first)
-                {
-                    std::cout << "ERROR path does not exist" << std::endl;
-                    continue;
-                }
-            }
-            else
-                first = current;
-
-            ls(first);
-        }
-        else if (command == "mv")
-        {
-            if (firstArg.empty())
-            {
-                std::cout << "ERROR not enough arguments" << std::endl;
-                continue;
-            }
-            
-            if (!second)
-                second = current;
-            if (!first)
-            {
-                std::cout << "ERROR source file not found" << std::endl;
-                continue;
-            }
-            else if (isDir(first))
-            {
-                std::cout << "ERROR source is directory" << std::endl;
-                continue;
-            }
-
-            std::vector<Node*>::iterator itr;
-            for (itr = second->childs.begin(); itr != second->childs.end(); ++itr)
-                if ((*itr)->_name == first->_name)
-                    break;
-            if (itr != second->childs.end())
-            {
-                second->childs.erase(itr);
-                delete *itr;
-            }
-            second->childs.push_back(first);
-            first->_parent->childs.erase(std::find(first->_parent->childs.begin(), first->_parent->childs.end(), first));
-            first->_parent = second;
-        }
-        else if (command == "cp")
-        {
-            if (firstArg.empty())
-            {
-                std::cout << "ERROR not enough arguments" << std::endl;
-                continue;
-            }
-            
-            if (!second)
-                second = current;
-            if (!first)
-            {
-                std::cout << "ERROR source file not found" << std::endl;
-                continue;
-            }
-            else if (isDir(first))
-            {
-                std::cout << "ERROR source is directory" << std::endl;
-                continue;
-            }
-
-            std::vector<Node*>::iterator itr;
-            for (itr = second->childs.begin(); itr != second->childs.end(); ++itr)
-                if ((*itr)->_name == first->_name)
-                    break;
-            if (itr != second->childs.end())
-            {
-                second->childs.erase(itr);
-                delete *itr;
-            }
-
-            second->childs.push_back(new Node(first->_name,second));
-        }
-        else if (command == "find")
-        {
-            if (firstArg.empty())
-            {
-                std::cout << "ERROR not enough arguments" << std::endl;
-                continue;
-            }
-
-            if (!secondArg.empty() && !second)
-            {
-                std::cout << "ERROR path does not exist" << std::endl;
-                continue;
-            }
-            else if (!second)
-                second = current;
-
-            find(second, firstArg);
-        }
-        else if (command == "pwd")
-        {
-            std::cout << pwd(current) << std::endl;
+            args[loaded] = append(args[loaded], line[i]);
         }
         else
-            std::cout << "ERROR unknown command." << std::endl;
+            string = false;
     }
 
+    processCommand(args[0], args[1], args[2]);
+
+    for (int i = 0; i < 3; i++)
+    {       
+        if (args[i])
+            clear(args[i]);
+    }
+    
+}
+
+void load(FILE* in, void(function)(char*))
+{
+    char c;
+    char* line = nullptr;
+    while ((c = getc(in)) != EOF)
+    {
+        if (c == '\r')
+            continue;
+
+        if (c == '\n')
+        {
+            if (line)
+            {
+                function(line);
+                line = clear(line);
+            }
+        }
+        else
+            line = append(line, c);
+    }
+}
+
+int main(int nr, char** args)
+{
+    if (nr < 3)
+    {
+        printf("Wrong number of arguments.");
+        return 1;
+    }
+
+    FILE * fs = fopen(args[1], "r");
+    FILE * commands = fopen(args[2], "r");
+    if (!fs)
+    {
+        printf("Could not open filesystem file.");
+        return 1;
+    }
+    if (!commands)
+    {
+        printf("Could not open commands file.");
+        fclose(fs);
+        return 1;
+    }
+
+    root = createNode("/");
+    current = root;
+    load(fs, &processFilesystem);
+    removeNode(root);
+    fclose(fs);
+    fclose(commands);
+    return 0;
+    fclose(fs);
+    load(commands, &parseCommand);
+    fclose(commands);
+    removeNode(root);
+#ifdef WIN32
+    system("pause");
+#endif
     return 0;
 }
 
