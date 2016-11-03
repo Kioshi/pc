@@ -15,12 +15,13 @@ void processFilesystem(char* line)
 void parseCommand(char* line)
 {
     char** args = (char**)malloc(sizeof(char*) * 3);
-    for (int i = 0; i < 3; i++)
-        args[i] = nullptr;
-
+    int i;
     int loaded = -1;
     bool string = false;
-    for (int i = 0; i < (int)strlen(line); i++)
+    for (i = 0; i < 3; i++)
+        args[i] = nullptr;
+
+    for (i = 0; i < (int)strlen(line); i++)
     {
         if (line[i] > ' ')
         {
@@ -37,7 +38,7 @@ void parseCommand(char* line)
 
     processCommand(args[0], args[1], args[2]);
 
-    for (int i = 0; i < 3; i++)
+    for (i = 0; i < 3; i++)
     {
         if (args[i])
             clear(args[i]);
@@ -72,14 +73,15 @@ void load(FILE* in, void(function)(char*))
 
 int main(int nr, char** args)
 {
+    FILE* fs, *commands;
     if (nr < 3)
     {
         printf("Wrong number of arguments.");
         return 1;
     }
 
-    FILE * fs = fopen(args[1], "r");
-    FILE * commands = fopen(args[2], "r");
+    fs = fopen(args[1], "r");
+    commands = fopen(args[2], "r");
     if (!fs)
     {
         printf("Could not open filesystem file.");

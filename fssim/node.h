@@ -5,15 +5,16 @@
 typedef struct childs
 {
     int size;
-    struct Node** arr;
+    struct node** arr;
 } Childs;
 
-typedef struct node
+struct node
 {
     char name[256];
-    struct Node* parent;
+    struct node* parent;
     Childs* childs;
-} Node;
+};
+typedef struct node Node;
 
 Node* root;
 Node* current;

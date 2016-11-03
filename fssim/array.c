@@ -12,16 +12,17 @@ Array* createArray()
 void push_back(Array* words, char* s)
 {
     char** tmp = (char**)_calloc((size_t)(words->size + 1), sizeof(char*));
+    char* string;
     if (words->string)
     {
-        for (int i = 0; i < words->size; i++)
+        int i;
+        for (i = 0; i < words->size; i++)
             tmp[i] = words->string[i];
-        //memcpy(tmp, words->string, sizeof(char*)*(words->size));
         free(words->string);
         words->string = nullptr;
     }
     words->string = tmp;
-    char*string = (char*)_calloc((strlen(s) + 1), sizeof(char));
+    string = (char*)_calloc((strlen(s) + 1), sizeof(char));
     strcpy(string, s);
     words->string[words->size++] = string;
 }
@@ -30,9 +31,10 @@ Array* toArray(char* string)
 {
     char s[256];
     int curr = 0;
-    memset(s, 0, sizeof(s));
     Array* words = createArray();
-    for (int i = 0; i < (int)strlen(string); i++)
+    int i;
+    memset(s, 0, sizeof(s));
+    for (i = 0; i < (int)strlen(string); i++)
     {
         if (curr == 256)
         {
@@ -64,7 +66,8 @@ void pop_front(Array* words)
     words->string[0] = nullptr;
     if (--words->size)
     {
-        for (int i = 1; i < words->size + 1; i++)
+        int i;
+        for (i = 1; i < words->size + 1; i++)
             words->string[i - 1] = words->string[i];
     }
     else
@@ -77,10 +80,12 @@ void pop_front(Array* words)
 
 void deleteWords(Array* words)
 {
+    int i;
+
     if (!words)
         return;
 
-    for (int i = 0; i < words->size; i++)
+    for (i = 0; i < words->size; i++)
         free(words->string[i]);
     if (words->string)
         free(words->string);

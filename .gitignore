@@ -4,3 +4,8 @@ fssim//ipch/*
 .vs/*
 fssim.VC.*
 ipch/*
+fssim/vag/*
+fssim/vgcore.*
+fssim/fssim.*
+fssim/a.out
+fssim/fs*txt

@@ -1,0 +1,9 @@
+BIN = fssim.exe
+OBJ = main.obj node.obj string.obj array.obj fssim.obj util.obj
+
+.c.obj:
+	cl $< /c
+
+$(BIN): $(OBJ)
+	cl $(OBJ) /Fe$(BIN)
+

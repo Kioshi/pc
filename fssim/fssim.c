@@ -33,8 +33,11 @@ void ls(char* path)
     if (!isDir(curr))
         print(curr, true);
     else
-        for (int i = 0; i < curr->childs->size; i++)
+    {
+        int i;
+        for (i = 0; i < curr->childs->size; i++)
             print(curr->childs->arr[i], true);
+    }
 }
 
 void pwd()
@@ -44,13 +47,14 @@ void pwd()
 
 void cd(char* path)
 {
+    Node * node;
     if (!strlen(path))
     {
         errNoArgs();
         return;
     }
 
-    Node * node = getNode(path, true, true);
+    node = getNode(path, true, true);
     if (!node)
         errNoPath();
     else if (!isDir(node))
@@ -62,7 +66,8 @@ void cd(char* path)
 
 int findChild(Childs* childs, Node* node)
 {
-    for (int i = 0; i < childs->size; i++)
+    int i;
+    for (i = 0; i < childs->size; i++)
     {
         Node * c = childs->arr[i];
         if (strcmp(c->name, node->name) == 0)
@@ -73,14 +78,18 @@ int findChild(Childs* childs, Node* node)
 
 void mvcp(char* firstArg, char* secondArg, void function(Node* first, Node* second))
 {
+    Node* first;
+    Node* second;
+    int i;
+
     if (strlen(firstArg) == 0)
     {
         errNoArgs();
         return;
     }
 
-    Node* first = getNode(firstArg, false, false);
-    Node* second = getNode(secondArg, false, true);
+    first = getNode(firstArg, false, false);
+    second = getNode(secondArg, false, true);
 
     if (!first)
     {
@@ -93,7 +102,7 @@ void mvcp(char* firstArg, char* secondArg, void function(Node* first, Node* seco
         return;
     }
 
-    int i = findChild(second->childs, first);
+    i = findChild(second->childs, first);
     if (i < second->childs->size)
     {
         Node* removed = second->childs->arr[i];
@@ -119,7 +128,8 @@ void cp(Node * first, Node* second)
 
 bool checkName(char name[256], char* search)
 {
-    for (int i = 0; i < (int)strlen(search); )
+    int i;
+    for (i = 0; i < (int)strlen(search); )
     {
         if (name[i] == search[i])
         {
@@ -128,7 +138,8 @@ bool checkName(char name[256], char* search)
         }
         else if (search[i] == '*')
         {
-            for (int j = i + 1; j < (int)strlen(name); j++)
+            int j;
+            for (j = i + 1; j < (int)strlen(name); j++)
                 if (checkName(name + j, search + i + 1))
                     return true;
             return false;
@@ -139,14 +150,15 @@ bool checkName(char name[256], char* search)
     return true;
 }
 
-void _find(struct Node* curr, char* search)
+void _find(Node* curr, char* search)
 {
+    int i;
     if (!isDir(curr) && checkName(curr->name, search))
         print(curr, true);
 
-    for (int i = 0; i < curr->childs->size; i++)
+    for (i = 0; i < curr->childs->size; i++)
     {
-        struct Node* n = curr->childs->arr[i];
+        Node* n = curr->childs->arr[i];
         _find(n, search);
     }
 }

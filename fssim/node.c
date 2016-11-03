@@ -30,10 +30,11 @@ Node * createNode(char name[256], Node* parent)
 
 void removeNode(Node* curr)
 {
+    int i;
     if (!curr)
         return;
 
-    for (int i = 0; i < curr->childs->size; i++)
+    for (i = 0; i < curr->childs->size; i++)
         removeNode(curr->childs->arr[i]);
 
     free(curr->childs->arr);
@@ -47,7 +48,8 @@ void addChild(Childs* childs, Node * node)
     Node** tmp = (Node**)_calloc(childs->size + 1, sizeof(Node*));
     if (childs->size > 0)
     {
-        for (int i = 0; i < childs->size; i++)
+        int i;
+        for (i = 0; i < childs->size; i++)
             tmp[i] = childs->arr[i];
         free(childs->arr);
         childs->arr = nullptr;
@@ -58,7 +60,8 @@ void addChild(Childs* childs, Node * node)
 
 void removeChild(Childs* childs, int index)
 {
-    for (int i = index + 1; i < childs->size; i++)
+    int i;
+    for (i = index + 1; i < childs->size; i++)
         childs->arr[i - 1] = childs->arr[i];
 
     if (--childs->size == 0)
@@ -75,10 +78,11 @@ bool isDir(Node * node)
 
 void insert(Node* curr, Array* words)
 {
+    int i;
     if (!words->size)
         return;
 
-    for (int i = 0; i < curr->childs->size; i++)
+    for (i = 0; i < curr->childs->size; i++)
     {
         Node* c = curr->childs->arr[i];
         if (strcmp(c->name, words->string[0]) == 0)
@@ -97,13 +101,16 @@ void insert(Node* curr, Array* words)
 
 Node * findNode(Node * curr, Array* words, bool onlyDir)
 {
+    char* currString;
+    int i;
+
     if (!words->size)
         return curr;
 
     if (onlyDir && !isDir(curr))
         return curr;
 
-    char* currString = (char*)_calloc(strlen(words->string[0]) + 1, sizeof(char));
+    currString = (char*)_calloc(strlen(words->string[0]) + 1, sizeof(char));
     strcpy(currString, words->string[0]);
     pop_front(words);
     while (strcmp(currString, "./") == 0 || strcmp(currString, ".") == 0)
@@ -124,7 +131,7 @@ Node * findNode(Node * curr, Array* words, bool onlyDir)
         return findNode(curr->parent, words, onlyDir);
     }
 
-    for (int i = 0; i < curr->childs->size; i++)
+    for (i = 0; i < curr->childs->size; i++)
     {
         Node* c = curr->childs->arr[i];
         if (strcmp(c->name, currString) == 0)
