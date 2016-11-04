@@ -30,18 +30,52 @@ Node * createNode(char name[256], Node* parent)
 
 void removeNode(Node* curr)
 {
-    int i;
     if (!curr)
         return;
 
-    for (i = 0; i < curr->childs->size; i++)
-        removeNode(curr->childs->arr[i]);
-
-    free(curr->childs->arr);
-    free(curr->childs);
+    removeChilds(curr->childs, true);
     free(curr);
 }
 
+void removeChilds(Childs* childs, bool removeNodes)
+{
+    int i;
+    if (removeNodes)
+        for (i = 0; i < childs->size; i++)
+            removeNode(childs->arr[i]);
+
+    free(childs->arr);
+    free(childs);
+}
+
+Childs * copyAndSortChilds(Node*curr)
+{
+    Childs* childs = (Childs*)_malloc(sizeof(Childs));
+    int i;
+    int index;
+    childs->size = curr->childs->size;
+    childs->arr = (Node**)_calloc(childs->size, sizeof(Node*));
+
+    for (i = 0; i < childs->size; i++)
+    {
+        int j;
+        for (j = 0; j < i; j++)
+        {
+            if (strcmp(curr->name, childs->arr[j]->name) > 0)
+            {
+                int k;
+                for (k = childs->size - 1; k > j; k--)
+                    childs->arr[k] = childs->arr[k-1];
+                childs->arr[j] = curr->childs->arr[i];
+                break;
+            }
+        }
+        if (j == i)
+            childs->arr[j] = curr->childs->arr[i];
+    }
+
+    return childs;
+}
 
 void addChild(Childs* childs, Node * node)
 {
@@ -79,12 +113,14 @@ bool isDir(Node * node)
 void insert(Node* curr, Array* words)
 {
     int i;
+    Node* n;
     if (!words->size)
         return;
 
     for (i = 0; i < curr->childs->size; i++)
     {
-        Node* c = curr->childs->arr[i];
+        Node* c;
+        c = curr->childs->arr[i];
         if (strcmp(c->name, words->string[0]) == 0)
         {
             pop_front(words);
@@ -92,7 +128,7 @@ void insert(Node* curr, Array* words)
             return;
         }
     }
-    Node* n = createNode(words->string[0], curr);
+    n = createNode(words->string[0], curr);
     addChild(curr->childs, n);
     pop_front(words);
     insert(n, words);
@@ -147,11 +183,12 @@ Node * findNode(Node * curr, Array* words, bool onlyDir)
 
 Node* getNode(char* path, bool onlyDir, bool currenWhenNoPath)
 {
+    Array* words;
+    Node * node;
     if (currenWhenNoPath && !path)
         return current;
 
-    Array* words = toArray(path);
-    Node * node;
+    words = toArray(path);
     if (path[0] == '/')
     {
         node = findNode(root, words, onlyDir);

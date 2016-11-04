@@ -26,6 +26,8 @@ Childs* createChilds();
 Node * createNode(char name[256], Node* parent);
 void removeNode(Node* curr);
 
+void removeChilds(Childs* childs, bool removeNodes);
+Childs * copyAndSortChilds(Node*curr);
 
 void addChild(Childs* childs, Node * node);
 

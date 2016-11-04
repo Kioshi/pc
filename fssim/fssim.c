@@ -35,8 +35,11 @@ void ls(char* path)
     else
     {
         int i;
-        for (i = 0; i < curr->childs->size; i++)
-            print(curr->childs->arr[i], true);
+        Childs* childs;
+        childs = copyAndSortChilds(curr);
+        for (i = 0; i < childs->size; i++)
+            print(childs->arr[i], true);
+        removeChilds(childs, false);
     }
 }
 
@@ -150,17 +153,23 @@ bool checkName(char name[256], char* search)
     return true;
 }
 
-void _find(Node* curr, char* search)
+int _find(Node* curr, char* search)
 {
     int i;
+    int count = 0;
     if (!isDir(curr) && checkName(curr->name, search))
+    {
         print(curr, true);
+        count++;
+    }
 
     for (i = 0; i < curr->childs->size; i++)
     {
         Node* n = curr->childs->arr[i];
-        _find(n, search);
+        count += _find(n, search);
     }
+
+    return count;
 }
 
 void find(char* firstArg, char* secondArg)
@@ -168,8 +177,8 @@ void find(char* firstArg, char* secondArg)
     Node* node = getNode(secondArg, true, true);
     if (!node)
         errNoPath();
-    else
-        _find(node, firstArg);
+    else if (!_find(node, firstArg))
+        printf("\n");
 }
 
 void processCommand(char * command, char* firstArg, char* secondArg)

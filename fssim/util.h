@@ -23,5 +23,8 @@ void* _malloc(size_t size);
 enum returnCodes
 {
     OK,
-    MALLOC_FAIL
+    MALLOC_FAIL,
+    WRONG_ARGUMENTS,
+    NO_FILESYSTEM,
+    NO_COMMANDS
 };

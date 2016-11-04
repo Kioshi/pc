@@ -9,3 +9,5 @@ fssim/vgcore.*
 fssim/fssim.*
 fssim/a.out
 fssim/fs*txt
+fssim/*.o
+fssim/fssim.vcxproj*

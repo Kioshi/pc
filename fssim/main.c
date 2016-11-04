@@ -76,22 +76,22 @@ int main(int nr, char** args)
     FILE* fs, *commands;
     if (nr < 3)
     {
-        printf("Wrong number of arguments.");
-        return 1;
+        printf("Wrong number of arguments.\n");
+        return WRONG_ARGUMENTS;
     }
 
     fs = fopen(args[1], "r");
     commands = fopen(args[2], "r");
     if (!fs)
     {
-        printf("Could not open filesystem file.");
-        return 1;
+        printf("Could not open filesystem file.\n");
+        return NO_FILESYSTEM;
     }
     if (!commands)
     {
-        printf("Could not open commands file.");
+        printf("Could not open commands file.\n");
         fclose(fs);
-        return 1;
+        return NO_COMMANDS;
     }
 
     root = createNode("/", nullptr);
