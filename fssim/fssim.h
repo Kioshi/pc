@@ -4,10 +4,15 @@
 #include "util.h"
 #include "node.h"
 
-/* Pointer to root */
-Node* root;
-/* Pointer to current node */
-Node* current;
+/**
+* @file    fssim.h
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*
+* @brief Contains simulated commands
+*/
+
+extern Node* root;
+extern Node* current;
 
 /**
 * @fn void errNoArgs();

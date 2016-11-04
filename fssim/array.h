@@ -1,6 +1,13 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+/**
+* @file    array.h
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*
+* @brief Contains Array struct and functions that manipulate with it
+*/
+
 typedef struct array
 {
     int size;

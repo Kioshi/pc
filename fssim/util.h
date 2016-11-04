@@ -6,6 +6,14 @@
 #include <string.h>
 #include <malloc.h>
 
+
+/**
+* @file    util.h
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*
+* @brief Contains utility enum, macros and calloc, malloc wrappers
+*/
+
 /* Disable Visual studio warning propagating their functions */
 #pragma warning(disable: 4996) /* _CRT_SECURE_NO_WARNINGS */
 

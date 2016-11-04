@@ -4,6 +4,13 @@
 #include "util.h"
 #include "array.h"
 
+/**
+* @file    node.h
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*
+* @brief Contains Node and Childs structs and functions that manipulate with them
+*/
+
 typedef struct childs
 {
     int size;
@@ -17,6 +24,11 @@ struct node
     Childs* childs;
 };
 typedef struct node Node;
+
+/* Pointer to root */
+Node* root;
+/* Pointer to current node */
+Node* current;
 
 /**
 * @fn void print(Node * node, bool last);

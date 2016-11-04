@@ -2,6 +2,13 @@
 #define STRING_H
 
 /**
+* @file    string.h
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*
+* @brief Contains function for working with char array as with string
+*/
+
+/**
 * @fn append(char* string, char c)
 * @brief Appends c to field of characters
 *

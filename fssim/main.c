@@ -1,6 +1,20 @@
 #include "fssim.h"
-#include "string.h"
 
+/**
+* @file    main.c
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*
+* @brief Main file with data loading functions
+*/
+
+
+/**
+* @mainpage  Fssim
+*
+* Simple filesystem simulation accepting commands: pwd, ls, cp mv, cd, find \n
+* Term paper of Stepan Martinek for subject PC on FAV UWB.
+* @author  Stepan Martinek <smartine@students.zcu.cz>
+*/
 
 void processFilesystem(char* line)
 {
