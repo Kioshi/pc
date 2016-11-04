@@ -1,4 +1,6 @@
-#pragma once
+#ifndef FSSIM_H
+#define FSSIM_H
+
 #include "util.h"
 #include "node.h"
 
@@ -23,10 +25,12 @@ void mvcp(char* firstArg, char* secondArg, void function(Node* first, Node* seco
 void mv(Node* first, Node* second);
 void cp(Node* first, Node* second);
 
-bool checkName(char name[256], char* search);
+bool checkName(char name[], char* search);
 
 int _find(Node* curr, char* search);
 
 void find(char* firstArg, char* secondArg);
 
 void processCommand(char* command, char* firstArg, char* secondArg);
+
+#endif /* FSSIM_H */

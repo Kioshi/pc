@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NODE_H
+#define NODE_H
+
 #include "util.h"
 #include "array.h"
 
@@ -23,7 +25,7 @@ void print(Node * node, bool last);
 
 Childs* createChilds();
 
-Node * createNode(char name[256], Node* parent);
+Node * createNode(char name[], Node* parent);
 void removeNode(Node* curr);
 
 void removeChilds(Childs* childs, bool removeNodes);
@@ -41,3 +43,5 @@ void insert(Node* curr, Array* words);
 Node * findNode(Node * curr, Array* words, bool onlyDir);
 
 Node* getNode(char* path, bool onlyDir, bool currenWhenNoPath);
+
+#endif /* NODE_H */

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef UTIL_H
+#define UTIL_H
 
 #include<stdlib.h>
 #include <stdio.h>
@@ -13,7 +14,7 @@
 
 typedef enum
 {
-    false,
+    false = 0,
     true
 } bool;
 
@@ -28,3 +29,5 @@ enum returnCodes
     NO_FILESYSTEM,
     NO_COMMANDS
 };
+
+#endif /* UTIL_H */

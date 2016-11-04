@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ARRAY_H
+#define ARRAY_H
 
 typedef struct array
 {
@@ -16,3 +17,5 @@ Array* toArray(char* string);
 void pop_front(Array* words);
 
 void deleteWords(Array* words);
+
+#endif /* ARRAY_H */

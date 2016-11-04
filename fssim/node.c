@@ -52,7 +52,6 @@ Childs * copyAndSortChilds(Node*curr)
 {
     Childs* childs = (Childs*)_malloc(sizeof(Childs));
     int i;
-    int index;
     childs->size = curr->childs->size;
     childs->arr = (Node**)_calloc(childs->size, sizeof(Node*));
 
@@ -190,13 +189,9 @@ Node* getNode(char* path, bool onlyDir, bool currenWhenNoPath)
 
     words = toArray(path);
     if (path[0] == '/')
-    {
         node = findNode(root, words, onlyDir);
-    }
     else
-    {
         node = findNode(current, words, onlyDir);
-    }
 
     deleteWords(words);
     return node;
