@@ -5,7 +5,7 @@ BIN = fssim.exe
 OBJ = main.o node.o string.o array.o fssim.o util.o
 DOC=doc
 RM=rm -Rf
-SRCDIR=src
+SRCDIR=.
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
@@ -16,6 +16,11 @@ $(BIN): $(OBJ)
 #Documentation
 doc:
 	doxygen Doxyfile
-
+   
+#Clean all created files
 clean:
 	$(RM) $(OBJ) $(DOC) $(BIN)
+                                    
+#Number of lines (including comments)
+count:
+	wc -l $(SRCDIR)/*.h $(SRCDIR)/*.c
