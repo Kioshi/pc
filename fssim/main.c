@@ -16,6 +16,13 @@
 * @author  Stepan Martinek <smartine@students.zcu.cz>
 */
 
+/**
+* @fn void processFilesystem(char* line)
+*
+* @brief Parse and insert nodes from line
+*
+* @param line Line to parse
+*/
 void processFilesystem(char* line)
 {
     Array* words = toArray(line);
@@ -26,6 +33,13 @@ void processFilesystem(char* line)
     deleteWords(words);
 }
 
+/**
+* @fn void parseCommand(char* line)
+*
+* @brief Parse command and its arguments from line
+*
+* @param line Line to parse
+*/
 void parseCommand(char* line)
 {
     char** args = (char**)malloc(sizeof(char*) * 3);
@@ -48,7 +62,7 @@ void parseCommand(char* line)
         }
         else
             string = false;
-    }
+    } 
 
     processCommand(args[0], args[1], args[2]);
 
@@ -62,6 +76,14 @@ void parseCommand(char* line)
 
 }
 
+/**
+* @fn void load(FILE* in, void(function)(char*))
+*
+* @brief Load row from specified file and executed specified functions with it.
+*
+* @param in File to load from
+* @param function Function to execute
+*/
 void load(FILE* in, void(function)(char*))
 {
     char c;
@@ -85,6 +107,15 @@ void load(FILE* in, void(function)(char*))
     line = clear(line);
 }
 
+/**
+* @fn int main(int nr, char** args)
+*
+* @brief Check arguments and load file system, then load and execute commands
+*
+* @param nr Number of arguments
+* @param args Field of strings
+* @return Returns zero if OK
+*/
 int main(int nr, char** args)
 {
     FILE* fs, *commands;
@@ -98,11 +129,14 @@ int main(int nr, char** args)
     commands = fopen(args[2], "r");
     if (!fs)
     {
+        if (commands)
+            fclose(commands);
         printf("Could not open filesystem file.\n");
         return NO_FILESYSTEM;
     }
     if (!commands)
     {
+        fclose(fs);
         printf("Could not open commands file.\n");
         fclose(fs);
         return NO_COMMANDS;

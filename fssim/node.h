@@ -41,15 +41,6 @@ Node* current;
 void print(Node * node, bool last);
 
 /**
-* @fn Childs* createChilds();
-*
-* @brief Create childs struct
-*
-* @return Returns new Childs struct
-*/
-Childs* createChilds();
-
-/**
 * @fn Node * createNode(char name[], Node* parent);
 *
 * @brief Create and return node
@@ -69,13 +60,22 @@ Node * createNode(char name[], Node* parent);
 void removeNode(Node* curr);
 
 /**
-* @fn void removeChilds(Childs* childs, bool removeNodes);
+* @fn Childs* createChilds();
 *
-* @brief Free resources of child, if removeNodes is true also calls removeNode for each child
-* @param childs Childs to free
-* @param removeNodes Decides if only free struct or child nodes too
+* @brief Create childs struct
+*
+* @return Returns new Childs struct
 */
-void removeChilds(Childs* childs, bool removeNodes);
+Childs* createChilds();
+
+/**
+* @fn void addChild(Childs* childs, Node * node);
+*
+* @brief Add note to childs struct
+* @param childs Childs struct where to add node
+* @param node Node to add
+*/
+void addChild(Childs* childs, Node * node);
 
 /**
 * @fn Childs * copyAndSortChilds(Node*curr);
@@ -88,15 +88,6 @@ void removeChilds(Childs* childs, bool removeNodes);
 Childs * copyAndSortChilds(Node*curr);
 
 /**
-* @fn void addChild(Childs* childs, Node * node);
-*
-* @brief Add note to childs struct
-* @param childs Childs struct where to add node
-* @param node Node to add
-*/
-void addChild(Childs* childs, Node * node);
-
-/**
 * @fn void removeChild(Childs* childs, int index);
 *
 * @brief Remove node on index from childs structure
@@ -104,6 +95,15 @@ void addChild(Childs* childs, Node * node);
 * @param index Position of node to remove
 */
 void removeChild(Childs* childs, int index);
+
+/**
+* @fn void removeChilds(Childs* childs, bool removeNodes);
+*
+* @brief Free resources of child, if removeNodes is true also calls removeNode for each child
+* @param childs Childs to free
+* @param removeNodes Decides if only free struct or child nodes too
+*/
+void removeChilds(Childs* childs, bool removeNodes);
 
 /**
 * @fn bool isDir(Node * node);
@@ -142,7 +142,7 @@ Node * findNode(Node * curr, Array* words, bool onlyDir);
 * @brief Find and returns node by string path
 * @param path String cointaining path
 * @param onlyDir Bool deciding type of node we are looking for
-* @param onlyDir Bool deciding if we use current node when path is not specified
+* @param currenWhenNoPath Bool deciding if we use current node when path is not specified
 *
 * @return Returns node, can be null
 */

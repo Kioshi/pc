@@ -25,16 +25,6 @@ typedef struct array
 Array* createArray();
 
 /**
-* @fn void push_back(Array* words, char* s);
-*
-* @brief Append string to end of Array
-*
-* @param words Array struct containing array of strings.
-* @param s Field of characters.
-*/
-void push_back(Array* words, char* s);
-
-/**
 * @fn Array* toArray(char* string);
 *
 * @brief Parse string to array of substrings by delimiter /
@@ -43,6 +33,16 @@ void push_back(Array* words, char* s);
 * @return Array struct
 */
 Array* toArray(char* string);
+
+/**
+* @fn void push_back(Array* words, char* s);
+*
+* @brief Append string to end of Array
+*
+* @param words Array struct containing array of strings.
+* @param s Field of characters.
+*/
+void push_back(Array* words, char* s);
 
 /**
 * @fn void pop_front(Array* words);

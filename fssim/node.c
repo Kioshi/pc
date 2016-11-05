@@ -10,14 +10,6 @@ void print(Node * node, bool last)
         printf("\n");
 }
 
-Childs* createChilds()
-{
-    Childs* childs = (Childs*)_malloc(sizeof(Childs));
-    childs->size = 0;
-    childs->arr = nullptr;
-    return childs;
-}
-
 Node * createNode(char name[256], Node* parent)
 {
     Node* node = (Node*)_malloc(sizeof(Node));
@@ -37,15 +29,27 @@ void removeNode(Node* curr)
     free(curr);
 }
 
-void removeChilds(Childs* childs, bool removeNodes)
+Childs* createChilds()
 {
-    int i;
-    if (removeNodes)
-        for (i = 0; i < childs->size; i++)
-            removeNode(childs->arr[i]);
+    Childs* childs = (Childs*)_malloc(sizeof(Childs));
+    childs->size = 0;
+    childs->arr = nullptr;
+    return childs;
+}
 
-    free(childs->arr);
-    free(childs);
+void addChild(Childs* childs, Node * node)
+{
+    Node** tmp = (Node**)_calloc(childs->size + 1, sizeof(Node*));
+    if (childs->size > 0)
+    {
+        int i;
+        for (i = 0; i < childs->size; i++)
+            tmp[i] = childs->arr[i];
+        free(childs->arr);
+        childs->arr = nullptr;
+    }
+    childs->arr = tmp;
+    childs->arr[childs->size++] = node;
 }
 
 Childs * copyAndSortChilds(Node*curr)
@@ -76,21 +80,6 @@ Childs * copyAndSortChilds(Node*curr)
     return childs;
 }
 
-void addChild(Childs* childs, Node * node)
-{
-    Node** tmp = (Node**)_calloc(childs->size + 1, sizeof(Node*));
-    if (childs->size > 0)
-    {
-        int i;
-        for (i = 0; i < childs->size; i++)
-            tmp[i] = childs->arr[i];
-        free(childs->arr);
-        childs->arr = nullptr;
-    }
-    childs->arr = tmp;
-    childs->arr[childs->size++] = node;
-}
-
 void removeChild(Childs* childs, int index)
 {
     int i;
@@ -102,6 +91,17 @@ void removeChild(Childs* childs, int index)
         free(childs->arr);
         childs->arr = nullptr;
     }
+}
+
+void removeChilds(Childs* childs, bool removeNodes)
+{
+    int i;
+    if (removeNodes)
+        for (i = 0; i < childs->size; i++)
+            removeNode(childs->arr[i]);
+
+    free(childs->arr);
+    free(childs);
 }
 
 bool isDir(Node * node)
@@ -132,7 +132,6 @@ void insert(Node* curr, Array* words)
     pop_front(words);
     insert(n, words);
 }
-
 
 Node * findNode(Node * curr, Array* words, bool onlyDir)
 {

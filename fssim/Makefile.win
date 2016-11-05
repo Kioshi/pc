@@ -1,5 +1,6 @@
 BIN = fssim.exe
 OBJ = main.obj node.obj string.obj array.obj fssim.obj util.obj
+RM=del
 
 .c.obj:
 	cl $< /c
@@ -7,3 +8,5 @@ OBJ = main.obj node.obj string.obj array.obj fssim.obj util.obj
 $(BIN): $(OBJ)
 	cl $(OBJ) /Fe$(BIN)
 
+clean:
+	$(RM) $(OBJ) $(DOC) $(BIN)

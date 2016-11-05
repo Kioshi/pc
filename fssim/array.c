@@ -9,24 +9,6 @@ Array* createArray()
     return arr;
 }
 
-void push_back(Array* words, char* s)
-{
-    char** tmp = (char**)_calloc((size_t)(words->size + 1), sizeof(char*));
-    char* string;
-    if (words->string)
-    {
-        int i;
-        for (i = 0; i < words->size; i++)
-            tmp[i] = words->string[i];
-        free(words->string);
-        words->string = nullptr;
-    }
-    words->string = tmp;
-    string = (char*)_calloc((strlen(s) + 1), sizeof(char));
-    strcpy(string, s);
-    words->string[words->size++] = string;
-}
-
 Array* toArray(char* string)
 {
     char s[256];
@@ -55,6 +37,24 @@ Array* toArray(char* string)
         push_back(words, s);
 
     return words;
+}
+
+void push_back(Array* words, char* s)
+{
+    char** tmp = (char**)_calloc((size_t)(words->size + 1), sizeof(char*));
+    char* string;
+    if (words->string)
+    {
+        int i;
+        for (i = 0; i < words->size; i++)
+            tmp[i] = words->string[i];
+        free(words->string);
+        words->string = nullptr;
+    }
+    words->string = tmp;
+    string = (char*)_calloc((strlen(s) + 1), sizeof(char));
+    strcpy(string, s);
+    words->string[words->size++] = string;
 }
 
 void pop_front(Array* words)

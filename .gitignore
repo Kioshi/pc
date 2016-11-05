@@ -13,3 +13,4 @@ fssim/*.o
 fssim/fssim.vcxproj*
 
 fssim/doc/*
+fssim/latex/*
