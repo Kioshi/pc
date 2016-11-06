@@ -1,4 +1,5 @@
 #include "fssim.h"
+#include "string.h"
 
 /**
 * @file    main.c

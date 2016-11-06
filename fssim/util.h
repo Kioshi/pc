@@ -3,8 +3,8 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <malloc.h>
+#include <string.h>
 
 
 /**
@@ -20,7 +20,7 @@
 /* Define for easier transfer from c++ */
 #define nullptr 0
 
-/* Define for easier transfer from c++ */
+/* Typedef for easier transfer from c++ */
 typedef enum
 {
     false = 0,
