@@ -1,0 +1,48 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[czech]{babel}
+%\usepackage[latin]{inputenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[cp1250]{inputenc}
+\usepackage[T1]{fontenc}
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Your Paper}
+\author{You}
+
+\begin{document}
+\maketitle
+
+\section{Zadání}
+
+Naprogramujte v ANSI C přenositelnou konzolovou aplikaci, která načte ze souboru obraz souborového systému a seznam příkazů, které se mají nad souborovým systémem vykonat.
+Program se bude spouštět příkazem: fssim.exe (files) (commands). Symbol (files) zastupuje jméno souboru s obrazem souborového systému a symbol (commands) zastupuje jméno souboru s příkazy (popis vstupních souborů bude uveden dále). Váš program tedy může být během testování spuštěn například takto:
+. . . \{ \}>fssim.exe files.txt commands.txt
+Výstupem programu bude výstup jednotlivých příkazů vykonaných nad simulovaným souborovým systémem vypsaný do příkazové řádky. Pokud nebudou uvedeny právě dva argumenty, vypište chybové hlášení a stručný návod k použití programu v angličtině podle běžných zvyklostí (viz např. ukázková semestrální práce na webu předmětu Programování v jazyce C). Vstupem programu jsou pouze argumenty na příkazové řádce – interakce s uživatelem pomocí klávesnice
+či myši v průběhu práce programu se neočekává.
+
+Hotovou práci odevzdejte v jediném archivu typu ZIP prostřednictvím automatického odevzdávacího a validačního systému. Archiv necht’ obsahuje všechny zdrojové soubory potřebné k přeložení programu, makefile pro Windows i Linux (pro přreklad v Linuxu připravte soubor pojmenovaný makefile a pro Windows makefile.win) a dokumentaci ve formátu PDF vytvořenou v typograﬁckém systému \TeX, resp. \LaTeX. Bude-li některá z částí chybět, kontrolní skript Vaši práci
+odmítne.
+
+\section{Analýza úlohy}
+
+\section{Popis impelmentace}
+
+\section{Uživatelská příručka}
+
+\section{Závěr}
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}

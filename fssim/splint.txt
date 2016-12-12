@@ -1,0 +1,305 @@
+splint main.c node.c node.h string.c string.h array.c array.h util.c util.h fssim.c fssim.h
+util.h:19:3: Datatype bool declared with inconsistent type: enum
+  A function, variable or constant is redefined with a different type. (Use
+  -incondefs to inhibit warning)
+   load file standard.lcd: Specification of bool: boolean
+main.c: (in function processFilesystem)
+main.c:8:9: Left operand of && is non-boolean (int):
+               words->size && strcmp(words->string[0], "/") == 0
+  The operand of a boolean operator is not a boolean. Use +ptrnegate to allow !
+  to be used on pointers. (Use -boolops to inhibit warning)
+main.c:13:2: Fresh storage words not released before return
+  A memory leak has been detected. Storage allocated locally is not released
+  before the last reference to it is lost. (Use -mustfreefresh to inhibit
+  warning)
+   main.c:7:34: Fresh storage words created
+main.c: (in function parseCommand)
+main.c:22:9: Index of possibly null pointer args: args
+  A possibly null pointer is dereferenced.  Value is either the result of a
+  function which may return null (in which case, code should check it is not
+  null), or a global, parameter or structure field declared with the null
+  qualifier. (Use -nullderef to inhibit warning)
+   main.c:17:19: Storage args may become null
+main.c:33:35: Null storage args[] passed as non-null param:
+                 append (args[loaded], ...)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+   main.c:22:19: Storage args[] becomes null
+main.c:44:13: Return value (type char *) ignored: clear(args[i])
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalother to inhibit warning)
+main.c: (in function load)
+main.c:55:13: Assignment of int to char: c = getc(in)
+  To make char and int types equivalent, use +charint.
+main.c:55:12: Operands of != have incompatible types (char, int):
+                 (c = getc(in)) != EOF
+main.c:64:17: Statement has no effect: function(line)
+  Statement has no visible effect --- no values are modified. (Use -noeffect to
+  inhibit warning)
+main.c:69:27: Null storage line passed as non-null param: append (line, ...)
+   main.c:54:18: Storage line becomes null
+main.c:71:18: Null storage line passed as non-null param: clear (line)
+   main.c:54:18: Storage line becomes null
+main.c:71:5: Fresh storage line (type char *) not released before assignment:
+                line = clear(line)
+   main.c:69:13: Fresh storage line created
+main.c:72:2: Fresh storage line not released before return
+   main.c:71:5: Fresh storage line created
+main.c: (in function main)
+main.c:93:9: Return value (type int) ignored: fclose(fs)
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+main.c:97:28: Null storage passed as non-null param: createNode (..., 0)
+main.c:100:5: Return value (type int) ignored: fclose(fs)
+main.c:102:5: Return value (type int) ignored: fclose(commands)
+util.h:19:3: Datatype bool redeclared with inconsistent type:
+                enum { false, true }
+   util.h:19:3: Previous definition of bool: boolean
+node.c: (in function createChilds)
+node.c:17:5: Implicitly only storage childs->arr (type struct node **) not
+                released before assignment: childs->arr = 0
+  A memory leak has been detected. Only-qualified storage is not released
+  before the last reference to it is lost. (Use -mustfreeonly to inhibit
+  warning)
+node.c:18:12: Null storage childs->arr derivable from return value: childs
+  Function returns a possibly null pointer, but is not declared using
+  /*@null@*/ annotation of result.  If function may return NULL, add /*@null@*/
+  annotation to the return value declaration. (Use -nullret to inhibit warning)
+   node.c:17:19: Storage childs->arr becomes null
+node.c:21:24: Function parameter name declared as manifest array (size constant
+                 is meaningless)
+  A formal parameter is declared as an array with size.  The size of the array
+  is ignored in this context, since the array formal parameter is treated as a
+  pointer. (Use -fixedformalarray to inhibit warning)
+node.c: (in function createNode)
+node.c:24:5: Implicitly only storage node->parent (type struct node *) not
+    released before assignment: node->parent = parent ? parent : node
+node.c:24:5: Implicitly temp storage parent assigned to implicitly only:
+                node->parent = parent ? parent : node
+  Temp storage (associated with a formal parameter) is transferred to a
+  non-temporary reference. The storage may be released or new aliases created.
+  (Use -temptrans to inhibit warning)
+node.c:26:12: Parameter 1 (node->name) to function strcpy is declared unique
+                 but may be aliased externally by parameter 2 (name)
+  A unique or only parameter may be aliased by some other parameter or visible
+  global. (Use -mayaliasunique to inhibit warning)
+node.c:27:5: Implicitly only storage node->childs (type Childs *) not released
+                before assignment: node->childs = createChilds()
+node.c: (in function removeNode)
+node.c:37:10: Only storage curr->parent (type struct node *) derived from
+                 released storage is not released (memory leak): curr
+  A storage leak due to incomplete deallocation of a structure or deep pointer
+  is suspected. Unshared storage that is reachable from a reference that is
+  being deallocated has not yet been deallocated. Splint assumes when an object
+  is passed as an out only void pointer that the outer object will be
+  deallocated, but the inner objects will not. (Use -compdestroy to inhibit
+  warning)
+node.c:37:10: Only storage curr->childs (type Childs *) derived from released
+                 storage is not released (memory leak): curr
+node.c:37:10: Implicitly temp storage curr passed as only param: free (curr)
+node.c: (in function removeChilds)
+node.c:47:10: Only storage *(childs->arr)->parent (type struct node *) derived
+    from released storage is not released (memory leak): childs->arr
+node.c:47:10: Only storage *(childs->arr)->childs (type Childs *) derived from
+                 released storage is not released (memory leak): childs->arr
+node.c:48:10: Implicitly temp storage childs passed as only param:
+                 free (childs)
+node.c: (in function copyAndSortChilds)
+node.c:56:35: Function _calloc expects arg 1 to be size_t gets int:
+                 childs->size
+  To allow arbitrary integral types to match any integral type, use
+  +matchanyintegral.
+node.c:56:5: Implicitly only storage childs->arr (type struct node **) not
+    released before assignment: childs->arr = (Node **)_calloc(childs->size,
+    sizeof(Node *))
+node.c: (in function addChild)
+node.c:81:34: Function _calloc expects arg 1 to be size_t gets int:
+                 childs->size + 1
+node.c: (in function removeChild)
+node.c:105:2: Function returns with null storage derivable from parameter
+                 childs->arr
+  A possibly null pointer is reachable from a parameter or global variable that
+  is not declared using a /*@null@*/ annotation. (Use -nullstate to inhibit
+  warning)
+   node.c:103:23: Storage childs->arr becomes null
+node.c: (in function insert)
+node.c:116:10: Operand of ! is non-boolean (int): !words->size
+node.c:134:2: Fresh storage n not released before return
+   node.c:130:5: Fresh storage n created
+node.c: (in function findNode)
+node.c:142:10: Operand of ! is non-boolean (int): !words->size
+node.c:143:16: Implicitly temp storage curr returned as implicitly only: curr
+node.c:146:16: Implicitly temp storage curr returned as implicitly only: curr
+node.c:153:14: Operand of ! is non-boolean (int): !words->size
+node.c:156:20: Implicitly temp storage curr returned as implicitly only: curr
+node.c:159:9: Fresh storage currString (type char *) not released before
+                 assignment: currString = words->string[0]
+   node.c:148:5: Fresh storage currString created
+node.c:161:5: Clauses exit with currString referencing local storage in while
+                 body, fresh storage if loop is not taken
+  The state of a variable is different depending on which branch is taken. This
+  means no annotation can sensibly be applied to the storage. (Use -branchstate
+  to inhibit warning)
+   node.c:148:5: Fresh storage currString created
+   node.c:148:5: Storage currString created
+node.c:166:39: Passed storage *words contains 1 undefined field: string
+  Storage derivable from a parameter, return value or global is not defined.
+  Use /*@out@*/ to denote passed or returned storage which need not be defined.
+  (Use -compdef to inhibit warning)
+node.c:175:32: Passed storage *words contains 1 undefined field: string
+node.c:180:12: Null storage returned as non-null: 0
+node.c: (in function getNode)
+node.c:188:16: Unqualified storage current returned as implicitly only: current
+  Unqualified storage is transferred in an inconsistent way. (Use
+  -unqualifiedtrans to inhibit warning)
+   main.c:98:5: Storage current becomes owned
+node.c:188:24: Function returns with global current referencing released
+                  storage
+  A global variable does not satisfy its annotations when control is
+  transferred. (Use -globstate to inhibit warning)
+   node.c:188:16: Storage current released
+node.c:197:17: Fresh storage words not released before return
+   node.c:190:5: Fresh storage words created
+string.c: (in function append)
+string.c:12:14: Implicitly temp storage string passed as only param:
+                   free (string)
+string.c:14:5: Variable string is released in false branch, but live in true
+                  branch.
+   string.c:14:5: in false branch:
+   string.c:12:14: Storage string released
+string.c: (in function clear)
+string.c:22:14: Implicitly temp storage string passed as only param:
+                   free (string)
+string.c:23:12: Null storage returned as non-null: 0
+array.c: (in function createArray)
+array.c:8:5: Implicitly only storage arr->string (type char **) not released
+                before assignment: arr->string = 0
+array.c:9:12: Null storage arr->string derivable from return value: arr
+   array.c:8:19: Storage arr->string becomes null
+array.c: (in function toArray)
+array.c:54:9: Test expression for if not boolean, type size_t: strlen(s)
+  Test expression type is not boolean or int. (Use -predboolint to inhibit
+  warning)
+array.c: (in function pop_front)
+array.c:65:10: Unqualified storage words->string[0] passed as only param:
+                  free (words->string[0])
+array.c:67:9: Test expression for if not boolean, type int: --words->size
+array.c:78:2: Function returns with null storage derivable from parameter
+                 words->string
+   array.c:76:25: Storage words->string becomes null
+array.c: (in function deleteWords)
+array.c:89:14: Unqualified storage words->string[i] passed as only param:
+                  free (words->string[i])
+array.c:92:10: Implicitly temp storage words passed as only param: free (words)
+util.c: (in function _malloc)
+util.c:18:12: Returned storage mem not completely defined (*mem is undefined):
+                 mem
+   util.c:15:30: Storage *mem allocated
+util.h:19:3: Datatype bool redeclared with inconsistent type:
+                enum { false, true }
+   util.h:19:3: Previous definition of bool: boolean
+fssim.c: (in function ls)
+fssim.c:43:6: Fresh storage childs not released before scope exit
+   fssim.c:39:9: Fresh storage childs created
+fssim.c:44:2: Fresh storage curr not released before return
+   fssim.c:27:45: Fresh storage curr created
+fssim.c: (in function cd)
+fssim.c:54:10: Operand of ! is non-boolean (size_t): !strlen(path)
+fssim.c:66:9: Variable node is dependent in false branch, but independent in
+                 true branch.
+   fssim.c:66:9: in false branch:
+   fssim.c:66:9: Storage node becomes dependent
+   fssim.c:66:9: in true branch:
+   fssim.c:60:5: Fresh storage node created
+fssim.c: (in function mvcp)
+fssim.c:100:16: Fresh storage second not released before return
+   fssim.c:95:5: Fresh storage second created
+fssim.c:105:16: Fresh storage first not released before return
+   fssim.c:94:5: Fresh storage first created
+fssim.c:105:16: Fresh storage second not released before return
+   fssim.c:95:5: Fresh storage second created
+fssim.c:116:5: Statement has no effect: function(first, ...
+fssim.c:117:2: Fresh storage first not released before return
+   fssim.c:94:5: Fresh storage first created
+fssim.c:117:2: Fresh storage second not released before return
+   fssim.c:95:5: Fresh storage second created
+fssim.c: (in function mv)
+fssim.c:124:5: Implicitly only storage first->parent (type struct node *) not
+                  released before assignment: first->parent = second
+fssim.c:124:5: Implicitly temp storage second assigned to implicitly only:
+                  first->parent = second
+fssim.c: (in function cp)
+fssim.c:129:30: New fresh storage (type Node *) passed as implicitly temp (not
+                   released): createNode(first->name, second)
+fssim.c:132:21: Function parameter name declared as manifest array (size
+                   constant is meaningless)
+fssim.c: (in function find)
+fssim.c:180:15: Operand of ! is non-boolean (int): !_find(node, firstArg)
+fssim.c:182:2: Fresh storage node not released before return
+   fssim.c:177:49: Fresh storage node created
+fssim.c: (in function processCommand)
+fssim.c:199:12: Possibly null storage firstArg passed as non-null param:
+                   cd (firstArg)
+fssim.c:201:12: Possibly null storage firstArg passed as non-null param:
+                   ls (firstArg)
+fssim.c:203:14: Possibly null storage firstArg passed as non-null param:
+                   mvcp (firstArg, ...)
+fssim.c:203:23: Possibly null storage secondArg passed as non-null param:
+                   mvcp (..., secondArg, ...)
+fssim.c:205:14: Possibly null storage firstArg passed as non-null param:
+                   mvcp (firstArg, ...)
+fssim.c:205:24: Possibly null storage secondArg passed as non-null param:
+                   mvcp (..., secondArg, ...)
+fssim.c:207:14: Possibly null storage firstArg passed as non-null param:
+                   find (firstArg, ...)
+fssim.c:207:24: Possibly null storage secondArg passed as non-null param:
+                   find (..., secondArg)
+array.h:11:8: Function exported but not used outside array: createArray
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+   array.c:10:1: Definition of createArray
+array.h:13:6: Function exported but not used outside array: push_back
+   array.c:28:1: Definition of push_back
+node.h:26:9: Function exported but not used outside node: createChilds
+   node.c:19:1: Definition of createChilds
+node.h:43:8: Function exported but not used outside node: findNode
+   node.c:181:1: Definition of findNode
+fssim.h:10:6: Function exported but not used outside fssim: errNoArgs
+   fssim.c:6:1: Definition of errNoArgs
+fssim.h:11:6: Function exported but not used outside fssim: errNoPath
+   fssim.c:10:1: Definition of errNoPath
+fssim.h:12:6: Function exported but not used outside fssim: errNotDir
+   fssim.c:14:1: Definition of errNotDir
+fssim.h:13:6: Function exported but not used outside fssim: errNoSrcFile
+   fssim.c:18:1: Definition of errNoSrcFile
+fssim.h:14:6: Function exported but not used outside fssim: errSrcDir
+   fssim.c:22:1: Definition of errSrcDir
+fssim.h:16:6: Function exported but not used outside fssim: ls
+   fssim.c:44:1: Definition of ls
+fssim.h:17:6: Function exported but not used outside fssim: pwd
+   fssim.c:49:1: Definition of pwd
+fssim.h:19:6: Function exported but not used outside fssim: cd
+   fssim.c:68:1: Definition of cd
+fssim.h:21:5: Function exported but not used outside fssim: findChild
+   fssim.c:80:1: Definition of findChild
+fssim.h:23:49: Function exported but not used outside fssim: mvcp
+   fssim.c:117:1: Definition of mvcp
+fssim.h:25:6: Function exported but not used outside fssim: mv
+   fssim.c:125:1: Definition of mv
+fssim.h:26:6: Function exported but not used outside fssim: cp
+   fssim.c:130:1: Definition of cp
+fssim.h:28:6: Function exported but not used outside fssim: checkName
+   fssim.c:154:1: Definition of checkName
+fssim.h:30:5: Function exported but not used outside fssim: _find
+   fssim.c:173:1: Definition of _find
+fssim.h:32:6: Function exported but not used outside fssim: find
+   fssim.c:182:1: Definition of find
+main.c:5:6: Function exported but not used outside main: processFilesystem
+   main.c:13:1: Definition of processFilesystem
+main.c:15:6: Function exported but not used outside main: parseCommand
+   main.c:49:1: Definition of parseCommand
+main.c:51:26: Function exported but not used outside main: load
+   main.c:72:1: Definition of load
+

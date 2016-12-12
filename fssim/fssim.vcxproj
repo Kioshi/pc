@@ -145,7 +145,19 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="fssim.cpp" />
+    <ClCompile Include="array.c" />
+    <ClCompile Include="fssim.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="node.c" />
+    <ClCompile Include="string.c" />
+    <ClCompile Include="util.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="array.h" />
+    <ClInclude Include="fssim.h" />
+    <ClInclude Include="node.h" />
+    <ClInclude Include="string.h" />
+    <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

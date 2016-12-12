@@ -13,13 +13,48 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\src">
+      <UniqueIdentifier>{d5dda79d-c503-434c-8e10-12bf0c8a1448}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="fssim.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="array.c">
+      <Filter>Source Files\src</Filter>
     </ClCompile>
+    <ClCompile Include="fssim.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="node.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="string.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+    <ClCompile Include="util.c">
+      <Filter>Source Files\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="array.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="fssim.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="node.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="string.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>Source Files\src</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

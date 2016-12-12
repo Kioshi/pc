@@ -1,0 +1,80 @@
+==30852== Memcheck, a memory error detector
+==30852== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==30852== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+==30852== Command: ./a.out fs\ -\ kopie.txt commands.txt
+==30852== 
+--30852-- Valgrind options:
+--30852--    --leak-check=full
+--30852--    -v
+--30852-- Contents of /proc/version:
+--30852--   Linux version 3.4.0-Microsoft (Microsoft@Microsoft.com) (gcc version 4.7 (GCC) ) #1 SMP PREEMPT Wed Dec 31 14:42:53 PST 2014
+--30852-- 
+--30852-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--30852-- Page sizes: currently 4096, max supported 4096
+--30852-- Valgrind library directory: /usr/local/valgrind-3.12.0/lib/valgrind
+--30852-- Reading syms from /mnt/e/Skola/c/fssim/fssim/a.out
+--30852-- Reading syms from /lib/x86_64-linux-gnu/ld-2.19.so
+--30852--   Considering /lib/x86_64-linux-gnu/ld-2.19.so ..
+--30852--   .. CRC mismatch (computed 46abf574 wanted 3ca2d3ca)
+--30852--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/ld-2.19.so ..
+--30852--   .. CRC is valid
+--30852-- Reading syms from /usr/local/valgrind-3.12.0/lib/valgrind/memcheck-amd64-linux
+--30852--    object doesn't have a dynamic symbol table
+--30852-- Scheduler: using generic scheduler lock implementation.
+--30852-- Reading suppressions file: /usr/local/valgrind-3.12.0/lib/valgrind/default.supp
+==30852== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-30852-by-kexik-on-???
+==30852== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-30852-by-kexik-on-???
+==30852== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-30852-by-kexik-on-???
+==30852== 
+==30852== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==30852== don't want to do, unless you know exactly what you're doing,
+==30852== or are doing some strange experiment):
+==30852==   /usr/local/valgrind-3.12.0/lib/valgrind/../../bin/vgdb --pid=30852 ...command...
+==30852== 
+==30852== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==30852==   /path/to/gdb ./a.out
+==30852== and then give GDB the following command
+==30852==   target remote | /usr/local/valgrind-3.12.0/lib/valgrind/../../bin/vgdb --pid=30852
+==30852== --pid is optional if only one valgrind process is running
+==30852== 
+--30852-- REDIR: 0x4019c50 (ld-linux-x86-64.so.2:strlen) redirected to 0x38058cb1 (vgPlain_amd64_linux_REDIR_FOR_strlen)
+--30852-- REDIR: 0x4019a00 (ld-linux-x86-64.so.2:index) redirected to 0x38058ccb (vgPlain_amd64_linux_REDIR_FOR_index)
+--30852-- Reading syms from /usr/local/valgrind-3.12.0/lib/valgrind/vgpreload_core-amd64-linux.so
+--30852-- Reading syms from /usr/local/valgrind-3.12.0/lib/valgrind/vgpreload_memcheck-amd64-linux.so
+==30852== WARNING: new redirection conflicts with existing -- ignoring it
+--30852--     old: 0x04019c50 (strlen              ) R-> (0000.0) 0x38058cb1 vgPlain_amd64_linux_REDIR_FOR_strlen
+--30852--     new: 0x04019c50 (strlen              ) R-> (2007.0) 0x04c2da90 strlen
+--30852-- REDIR: 0x4019c20 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2ebe0 (strcmp)
+--30852-- REDIR: 0x401a970 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c31c60 (mempcpy)
+--30852-- Reading syms from /lib/x86_64-linux-gnu/libc-2.19.so
+--30852--   Considering /lib/x86_64-linux-gnu/libc-2.19.so ..
+--30852--   .. CRC mismatch (computed ac9b5ddb wanted a10d05bf)
+--30852--   Considering /usr/lib/debug/lib/x86_64-linux-gnu/libc-2.19.so ..
+--30852--   .. CRC is valid
+--30852-- REDIR: 0x4ec2c50 (libc.so.6:strcasecmp) redirected to 0x4a257b0 (_vgnU_ifunc_wrapper)
+--30852-- REDIR: 0x4ec4f40 (libc.so.6:strncasecmp) redirected to 0x4a257b0 (_vgnU_ifunc_wrapper)
+--30852-- REDIR: 0x4ec2420 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a257b0 (_vgnU_ifunc_wrapper)
+--30852-- REDIR: 0x4ec06b0 (libc.so.6:rindex) redirected to 0x4c2d420 (rindex)
+--30852-- REDIR: 0x4eb8660 (libc.so.6:malloc) redirected to 0x4c2ab5c (malloc)
+--30852-- REDIR: 0x4ec1300 (libc.so.6:__GI_strstr) redirected to 0x4c31ef0 (__strstr_sse2)
+--30852-- REDIR: 0x4ec24b0 (libc.so.6:memset) redirected to 0x4c30e80 (memset)
+--30852-- REDIR: 0x4ebe3f0 (libc.so.6:strcpy) redirected to 0x4a257b0 (_vgnU_ifunc_wrapper)
+--30852-- REDIR: 0x4ed2a80 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x4c2dab0 (strcpy)
+--30852-- REDIR: 0x4eb9130 (libc.so.6:calloc) redirected to 0x4c2c8df (calloc)
+--30852-- REDIR: 0x4ebe9b0 (libc.so.6:strlen) redirected to 0x4c2d9d0 (strlen)
+--30852-- REDIR: 0x4ec7620 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a257b0 (_vgnU_ifunc_wrapper)
+--30852-- REDIR: 0x4ecdec0 (libc.so.6:__memcpy_sse2_unaligned) redirected to 0x4c2efa0 (memcpy@@GLIBC_2.14)
+--30852-- REDIR: 0x4eb8d00 (libc.so.6:free) redirected to 0x4c2bc56 (free)
+--30852-- REDIR: 0x4ebcf60 (libc.so.6:strcmp) redirected to 0x4a257b0 (_vgnU_ifunc_wrapper)
+--30852-- REDIR: 0x4f75e00 (libc.so.6:__strcmp_ssse3) redirected to 0x4c2eaa0 (strcmp)
+--30852-- REDIR: 0x4ec99b0 (libc.so.6:strchrnul) redirected to 0x4c31780 (strchrnul)
+--30852-- REDIR: 0x4ec2600 (libc.so.6:__GI_mempcpy) redirected to 0x4c31990 (__GI_mempcpy)
+==30852== 
+==30852== HEAP SUMMARY:
+==30852==     in use at exit: 0 bytes in 0 blocks
+==30852==   total heap usage: 41,909 allocs, 41,909 frees, 1,455,524 bytes allocated
+==30852== 
+==30852== All heap blocks were freed -- no leaks are possible
+==30852== 
+==30852== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==30852== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

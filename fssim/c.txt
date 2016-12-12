@@ -1,0 +1,83 @@
+cd /usr/
+ls /tmp/
+cd /
+cp
+ls
+cp /tmp/neexistuje
+ls
+cp /usr/bin/bla/
+ls
+cp /tmp/a
+ls
+ls /tmp/
+cp /a /tmp/
+ls /a
+ls /tmp/
+cd /tmp/b/
+cp ../a
+ls ../a
+ls
+cp a ../
+ls
+ls ../
+cp /sort/ab /usr/bin/
+ls /sort/ab
+ls /usr/bin/
+cp /sort/ab /usr/bin/
+ls /sort/ab
+ls /usr/bin/
+cp /sort/bc ../
+ls /sort/bc
+ls ../
+cp /sort/DE /sort/
+ls /sort/DE
+ls /sort/
+cd /
+ls
+mv
+ls
+mv /tmp/neexistuje
+ls
+mv /usr/bin/bla/
+ls
+mv /tmp/a
+ls
+ls /tmp/
+mv /a /tmp/
+ls /
+ls /tmp/
+cd /tmp/b/
+mv ../a
+ls ../
+ls
+mv a ../
+ls
+ls ../
+mv /sort/ab /usr/bin/
+ls /sort/
+ls /usr/bin/
+mv /sort/ab /usr/bin/
+ls /sort/
+ls /usr/bin/
+mv /sort/bc ../
+ls /sort/
+ls ../
+mv /sort/DE /sort/
+ls /sort/
+cd /usr/bin/
+find
+find soubor
+find so*or  
+find *or
+find sou*
+find irb2.3
+find irb2.*
+find *.3
+cd /hodne/dlouha/cesta/do/adresare/
+find /usr/bin/
+find soubor /usr/bin/
+find so*or /usr/bin/
+find *or /usr/bin/
+find sou* /usr/bin/
+find irb2.3 /usr/bin/
+find irb2.* /usr/bin/

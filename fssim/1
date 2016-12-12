@@ -1,0 +1,446 @@
+==21804== Memcheck, a memory error detector
+==21804== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==21804== Using Valgrind-3.12.0 and LibVEX; rerun with -h for copyright info
+==21804== Command: ./a.out fs.txt commands.txt 2
+==21804== 
+==21804== Source and destination overlap in memcpy(0x51fce00, 0x51fce08, 16)
+==21804==    at 0x4C2F00C: memcpy@@GLIBC_2.14 (vg_replace_strmem.c:1018)
+==21804==    by 0x400E81: pop_front(Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401051: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Source and destination overlap in memcpy(0x51fe060, 0x51fe068, 16)
+==21804==    at 0x4C2F00C: memcpy@@GLIBC_2.14 (vg_replace_strmem.c:1018)
+==21804==    by 0x400E81: pop_front(Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401051: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Source and destination overlap in memcpy(0x5202e70, 0x5202e78, 16)
+==21804==    at 0x4C2F00C: memcpy@@GLIBC_2.14 (vg_replace_strmem.c:1018)
+==21804==    by 0x400E81: pop_front(Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401358: findNode(Node*, Array*, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401509: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401561: ls(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B59: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Source and destination overlap in memcpy(0x5204ad0, 0x5204ad8, 16)
+==21804==    at 0x4C2F00C: memcpy@@GLIBC_2.14 (vg_replace_strmem.c:1018)
+==21804==    by 0x400E81: pop_front(Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401358: findNode(Node*, Array*, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x40147D: findNode(Node*, Array*, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401509: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401714: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Source and destination overlap in memcpy(0x51ffe10, 0x51ffe18, 16)
+==21804==    at 0x4C2F00C: memcpy@@GLIBC_2.14 (vg_replace_strmem.c:1018)
+==21804==    by 0x400FB4: removeChild(Childs*, int) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401852: mv(Node*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017E7: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid read of size 8
+==21804==    at 0x400DED: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x5209ab8 is 264 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401886: cp(Node*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017E7: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid free() / delete / delete[] / realloc()
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400E07: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x52099b0 is 0 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401886: cp(Node*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017E7: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid read of size 8
+==21804==    at 0x400DED: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x520d908 is 264 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401886: cp(Node*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017E7: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid free() / delete / delete[] / realloc()
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400E07: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x520d800 is 0 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017D3: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401886: cp(Node*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017E7: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid read of size 8
+==21804==    at 0x400DED: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51fefc8 is 264 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401096: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid free() / delete / delete[] / realloc()
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400E07: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51feec0 is 0 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401096: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid read of size 8
+==21804==    at 0x400DED: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51fbed8 is 264 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401096: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4010D3: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid read of size 8
+==21804==    at 0x400DED: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51fbce8 is 264 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401096: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid free() / delete / delete[] / realloc()
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400E07: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51fbbe0 is 0 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400DC6: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401096: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid read of size 8
+==21804==    at 0x400DED: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51fb648 is 264 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401E9F: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== Invalid free() / delete / delete[] / realloc()
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400E07: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Address 0x51fb540 is 0 bytes inside a block of size 272 free'd
+==21804==    at 0x4C2BCDD: free (vg_replace_malloc.c:530)
+==21804==    by 0x400DE8: removeNode(Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EFD: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==  Block was alloc'd at
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400D22: createNode(char*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401E9F: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 
+==21804== HEAP SUMMARY:
+==21804==     in use at exit: 1,051 bytes in 50 blocks
+==21804==   total heap usage: 1,127 allocs, 1,088 frees, 18,166 bytes allocated
+==21804== 
+==21804== 8 bytes in 1 blocks are definitely lost in loss record 1 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400EC4: addChild(Childs*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4010B4: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 16 bytes in 1 blocks are definitely lost in loss record 2 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400EC4: addChild(Childs*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4010B4: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 16 bytes in 1 blocks are definitely lost in loss record 3 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400EC4: addChild(Childs*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4010B4: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401064: insert(Node*, Array*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401277: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 24 bytes in 1 blocks are definitely lost in loss record 4 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400EC4: addChild(Childs*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401813: mv(Node*, Node*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4017E7: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 24 bytes in 1 blocks are definitely lost in loss record 5 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400C45: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401A50: find(char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BE4: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 27 bytes in 1 blocks are definitely lost in loss record 6 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x401180: append(char*, char) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401DC1: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 32 bytes in 2 blocks are definitely lost in loss record 7 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400C45: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401634: cd(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B33: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 32 bytes in 2 blocks are definitely lost in loss record 8 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400C45: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x40172E: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 32 bytes in 2 blocks are definitely lost in loss record 9 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400CB1: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401714: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 48 bytes in 2 blocks are definitely lost in loss record 10 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400CB1: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401714: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B8B: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 48 bytes in 2 blocks are definitely lost in loss record 11 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400C45: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x40172E: mvcp(char*, char*, void (*)(Node*, Node*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401BBA: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 64 bytes in 4 blocks are definitely lost in loss record 12 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400C45: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x40122B: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 96 bytes in 3 blocks are definitely lost in loss record 13 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400CB1: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x40122B: processFilesystem(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EC5: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 152 bytes in 9 blocks are definitely lost in loss record 14 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x400A83: push_back(Array*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x400C45: toArray(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x4014E0: getNode(char*, bool, bool) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401561: ls(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401B59: processCommand(char*, char*, char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== 432 bytes in 18 blocks are definitely lost in loss record 15 of 15
+==21804==    at 0x4C2ABE3: malloc (vg_replace_malloc.c:299)
+==21804==    by 0x401C0C: parseCommand(char*) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401D9D: load(_IO_FILE*, void (*)(char*)) (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804==    by 0x401EE2: main (in /mnt/e/Skola/c/fssim/fssim/a.out)
+==21804== 
+==21804== LEAK SUMMARY:
+==21804==    definitely lost: 1,051 bytes in 50 blocks
+==21804==    indirectly lost: 0 bytes in 0 blocks
+==21804==      possibly lost: 0 bytes in 0 blocks
+==21804==    still reachable: 0 bytes in 0 blocks
+==21804==         suppressed: 0 bytes in 0 blocks
+==21804== 
+==21804== For counts of detected and suppressed errors, rerun with: -v
+==21804== ERROR SUMMARY: 56 errors from 31 contexts (suppressed: 0 from 0)

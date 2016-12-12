@@ -1,0 +1,575 @@
+$pwd
+/
+$cd
+ERROR not enough arguments
+$pwd
+/
+$cd /usr/bin/
+$pwd
+/usr/bin/
+$cd /
+$pwd
+/
+$cd /hodne/dlouha/cesta/do/adresare/
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /neexistuje/
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /usr/bin/neexistuje/
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /hodne/dlouha/cesta/do/adresare/neexistuje/
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /soubor
+ERROR target is not a directory
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /usr/bin/soubor
+ERROR target is not a directory
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /hodne/dlouha/cesta/do/adresare/soubor
+ERROR target is not a directory
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /souborNeni
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /usr/bin/souborNeni
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /hodne/dlouha/cesta/do/adresare/souborNeni
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /usr/bin/
+$pwd
+/usr/bin/
+$cd ../bin/
+$pwd
+/usr/bin/
+$cd ../../
+$pwd
+/
+$cd hodne/dlouha/cesta/do/adresare/
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd ../../../../../
+$pwd
+/
+$cd hodne/dlouha/cesta/do/adresare/
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd ../../../../../hodne/dlouha/cesta/do/adresare/
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /
+$pwd
+/
+$cd ../
+ERROR path does not exist
+$pwd
+/
+$cd hodne/dlouha/cesta/do/adresare/
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd ../../../../../../hodne/dlouha/cesta/do/adresare/
+ERROR path does not exist
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$cd /usr/
+$pwd
+/usr/
+$cd ../soubor
+ERROR target is not a directory
+$pwd
+/usr/
+$cd ../souborNeni
+ERROR path does not exist
+$pwd
+/usr/
+$cd /
+$pwd
+/
+$cd usr/bin/
+$pwd
+/usr/bin/
+$cd ../../
+$pwd
+/
+$cd usr/Bin/
+$pwd
+/usr/Bin/
+$cd ../../
+$pwd
+/
+$cd Usr/Bin/
+$pwd
+/Usr/Bin/
+$cd /hodne/dlouha/cesta/do/adresare/
+$pwd
+/hodne/dlouha/cesta/do/adresare/
+$ls
+/hodne/dlouha/cesta/do/adresare/soubor
+$ls /usr/bin/
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$ls /
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$ls /hodne/dlouha/cesta/do/adresare/
+/hodne/dlouha/cesta/do/adresare/soubor
+$ls /neexistuje/
+ERROR path does not exist
+$ls /usr/bin/neexistuje/
+ERROR path does not exist
+$ls /hodne/dlouha/cesta/do/adresare/neexistuje/
+ERROR path does not exist
+$ls /soubor
+soubor
+$ls /usr/bin/soubor
+soubor
+$ls /hodne/dlouha/cesta/do/adresare/soubor
+soubor
+$ls /souborNeni
+ERROR path does not exist
+$ls /usr/bin/souborNeni
+ERROR path does not exist
+$ls /hodne/dlouha/cesta/do/adresare/souborNeni
+ERROR path does not exist
+$cd /usr/bin/
+$ls ../bin/
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$cd /hodne/dlouha/cesta/do/adresare/
+$ls ../../../../../
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$cd /hodne/dlouha/cesta/do/adresare/
+$ls ../../../../../hodne/dlouha/cesta/do/adresare/
+/hodne/dlouha/cesta/do/adresare/soubor
+$cd /
+$ls ../
+ERROR path does not exist
+$cd hodne/dlouha/cesta/do/adresare/
+$ls ../../../../../../hodne/dlouha/cesta/do/adresare/
+ERROR path does not exist
+$cd /usr/
+$ls ../soubor
+soubor
+$ls ../souborNeni
+ERROR path does not exist
+$ls /usr/bin/
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$ls /usr/Bin/
+/usr/Bin/BinZacinaVelkymPismenem
+$ls /Usr/Bin/
+/Usr/Bin/UsrABinZacinaVelkymPismenem
+$ls /usr/bin/bla/
+/usr/bin/bla/soubor
+/usr/bin/bla/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks
+$ls /tmp/
+/tmp/a
+/tmp/b/
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$cd /
+$cp
+ERROR not enough arguments
+$ls
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$cp /tmp/neexistuje
+ERROR source file not found
+$ls
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$cp /usr/bin/bla/
+ERROR source is directory
+$ls
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$cp /tmp/a
+$ls
+/a
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$ls /tmp/
+/tmp/a
+/tmp/b/
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$cp /a /tmp/
+$ls /a
+a
+$ls /tmp/
+/tmp/a
+/tmp/b/
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$cd /tmp/b/
+$cp ../a
+$ls ../a
+a
+$ls
+/tmp/b/a
+$cp a ../
+$ls
+/tmp/b/a
+$ls ../
+/tmp/a
+/tmp/b/
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$cp /sort/ab /usr/bin/
+$ls /sort/ab
+ab
+$ls /usr/bin/
+/usr/bin/ab
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$cp /sort/ab /usr/bin/
+$ls /sort/ab
+ab
+$ls /usr/bin/
+/usr/bin/ab
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$cp /sort/bc ../
+$ls /sort/bc
+bc
+$ls ../
+/tmp/a
+/tmp/b/
+/tmp/bc
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$cp /sort/DE /sort/
+$ls /sort/DE
+DE
+$ls /sort/
+/sort/ab
+/sort/bc
+/sort/DE
+/sort/EF
+/sort/12
+/sort/23
+$cd /
+$ls
+/a
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$mv
+ERROR not enough arguments
+$ls
+/a
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$mv /tmp/neexistuje
+ERROR source file not found
+$ls
+/a
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$mv /usr/bin/bla/
+ERROR source is directory
+$ls
+/a
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$mv /tmp/a
+$ls
+/a
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$ls /tmp/
+/tmp/b/
+/tmp/bc
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$mv /a /tmp/
+$ls /
+/1/
+/2/
+/3/
+/4/
+/5/
+/tmp/
+/usr/
+/var/
+/Usr/
+/sort/
+/hodne/
+/soubor
+$ls /tmp/
+/tmp/a
+/tmp/b/
+/tmp/bc
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$cd /tmp/b/
+$mv ../a
+$ls ../
+/tmp/b/
+/tmp/bc
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$ls
+/tmp/b/a
+$mv a ../
+$ls
+$ls ../
+/tmp/a
+/tmp/b/
+/tmp/bc
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$mv /sort/ab /usr/bin/
+$ls /sort/
+/sort/bc
+/sort/DE
+/sort/EF
+/sort/12
+/sort/23
+$ls /usr/bin/
+/usr/bin/ab
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$mv /sort/ab /usr/bin/
+ERROR source file not found
+$ls /sort/
+/sort/bc
+/sort/DE
+/sort/EF
+/sort/12
+/sort/23
+$ls /usr/bin/
+/usr/bin/ab
+/usr/bin/bla/
+/usr/bin/tmp/
+/usr/bin/hodne/
+/usr/bin/irb2.3
+/usr/bin/soubor
+/usr/bin/ruby2.3
+/usr/bin/pydoc3.5
+$mv /sort/bc ../
+$ls /sort/
+/sort/DE
+/sort/EF
+/sort/12
+/sort/23
+$ls ../
+/tmp/a
+/tmp/b/
+/tmp/bc
+/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/
+$mv /sort/DE /sort/
+$ls /sort/
+/sort/DE
+/sort/EF
+/sort/12
+/sort/23
+$cd /usr/bin/
+$find
+ERROR not enough arguments
+$find soubor
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find so*or
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find *or
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find sou*
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find irb2.3
+/usr/bin/irb2.3
+$find irb2.*
+/usr/bin/irb2.3
+$find *.3
+/usr/bin/irb2.3
+/usr/bin/ruby2.3
+$cd /hodne/dlouha/cesta/do/adresare/
+$find /usr/bin/
+
+$find soubor /usr/bin/
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find so*or /usr/bin/
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find *or /usr/bin/
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find sou* /usr/bin/
+/usr/bin/bla/soubor
+/usr/bin/tmp/BaconIpsumDolorAmetCulpaTurduckenKevinUtFrankfurterDoloreShortRibsLaborisDrumstickJerkyEtTurkeyQuisSuntPorkLoinVenisonJerkyProsciuttoPorkChopMeatloafDolorAdAlcatraUllamcoPariaturConsecteturTurduckenExercitationInCowMeatloafTurduckenTongueKevinSirloinPorks/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/usr/bin/hodnedlouha/cesta/do/adresare/soubor
+/usr/bin/hodne/dlouha/cesta/do/adresare/soubor
+/usr/bin/soubor
+$find irb2.3 /usr/bin/
+/usr/bin/irb2.3
+$find irb2.* /usr/bin/
+/usr/bin/irb2.3

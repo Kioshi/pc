@@ -1,0 +1,19 @@
+pwd
+cd /home/user/
+cd ../sytem/
+ls
+ls /home/user/Music/
+mv /home/user/Music/file.mp3 /Trash/
+find *.mp3 /home/user/Music/
+ls /home/user/Music/    
+find a.mp3 /home/user/Music/
+ls /Trash/
+cp /Trash/file.mp3 /home/user/Music/  
+ls /home/user/Music/                
+ls /Trash/
+cp /Trash/file.mp3 /home/user/Music/  
+ls /home/user/Music/               
+ls /Trash/
+mv /Trash/file.mp3 /home/user/Music/ 
+ls /home/user/Music/                 
+ls /Trash/
