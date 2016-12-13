@@ -41,8 +41,11 @@ int wordLen(size_t start, char * string)
     size_t i = start;
     for (; i < strlen(string); i++)
     {
-        if (string[i] == '/')
-            break;
+		if (string[i] == '/')
+		{
+			i++;
+			break;
+		}
     }
     return i - start;
 
