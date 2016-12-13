@@ -93,6 +93,8 @@ void mvcp(char* firstArg, char* secondArg, void function(Node* first, Node* seco
 
     first = getNode(firstArg, false, false);
     second = getNode(secondArg, false, true);
+    if (!second)
+        second = current;
 
     if (!first)
     {

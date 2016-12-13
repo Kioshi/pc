@@ -1,5 +1,6 @@
 #ifndef STRING_H
 #define STRING_H
+#include <string.h>
 
 /**
 * @file    string.h
@@ -48,5 +49,16 @@ int compare(char * a, char * b);
 * @return Returns  group id
 */
 int getGroup(char c);
+
+/**
+* @fn int wordLen(size_t start, char * string);
+*
+* @brief Return dir/file lenght
+* @param start starting index
+* @param string word
+*
+* @return Returns  group id
+*/
+int wordLen(size_t start, char * string);
 
 #endif /* STRING_H */

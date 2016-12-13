@@ -14,10 +14,11 @@ void print(Node * node, bool last)
 Node * createNode(char name[257], Node* parent)
 {
     Node* node = (Node*)_malloc(sizeof(Node));
-    node->parent = parent /*? parent : node*/;
+    node->parent = parent;
     memset(node->name, 0, 257);
     strcpy(node->name, name);
     node->childs = createChilds();
+    nodes++;
     return node;
 }
 
@@ -28,6 +29,7 @@ void removeNode(Node* curr)
 
     removeChilds(curr->childs, true);
     free(curr);
+    nodes--;
 }
 
 Childs* createChilds()
@@ -35,6 +37,8 @@ Childs* createChilds()
     Childs* childs = (Childs*)_malloc(sizeof(Childs));
     childs->size = 0;
     childs->arr = nullptr;
+
+    chs++;
     return childs;
 }
 
@@ -69,6 +73,7 @@ char* getAbsoluteName(char* string, Node * node)
 Childs * copyAndSortChilds(Childs* old)
 {
     Childs* childs = (Childs*)_malloc(sizeof(Childs));
+    chs++;
     int i;
     childs->size = old->size;
     childs->arr = (Node**)_calloc(childs->size, sizeof(Node*));
@@ -106,7 +111,8 @@ void removeChild(Childs* childs, int index)
     for (i = index + 1; i < childs->size; i++)
         childs->arr[i - 1] = childs->arr[i];
 
-    if (--childs->size == 0)
+    childs->size--;
+    if (childs->size == 0)
     {
         free(childs->arr);
         childs->arr = nullptr;
@@ -117,12 +123,19 @@ void removeChilds(Childs* childs, bool removeNodes)
 {
     int i;
     if (removeNodes)
+    {
         for (i = 0; i < childs->size; i++)
-            removeNode(childs->arr[i]);
-
-    if (childs)
+        {
+            if (childs->arr[i] != nullptr)
+                removeNode(childs->arr[i]);
+            childs->arr[i] = nullptr;
+        }
+    }
+    if (childs->arr)
         free(childs->arr);
+    childs->arr = nullptr;
     free(childs);
+    chs--;
 }
 
 bool isDir(Node * node)
@@ -176,8 +189,10 @@ Node * findNode(Node * curr, Array* words, bool onlyDir)
             return curr;
         }
 
-        currString = words->string[0];
         pop_front(words);
+        free(currString);
+        currString = (char*)_calloc(strlen(words->string[0]) + 1, sizeof(char));
+        strcpy(currString, words->string[0]);
     }
 
     if (strcmp(currString, "../") == 0 || strcmp(currString, "..") == 0)

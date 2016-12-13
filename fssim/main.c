@@ -98,13 +98,16 @@ void load(FILE* in, void(function)(char*))
         {
             if (line)
             {
-                /*printf("%s\n",line);*/
                 function(line);
                 line = clear(line);
             }
         }
         else
             line = append(line, c);
+    }
+    if (line)
+    {
+        function(line);
     }
     line = clear(line);
 }
@@ -151,6 +154,9 @@ int main(int nr, char** args)
     load(commands, &parseCommand);
     fclose(commands);
     removeNode(root);
+    root = nullptr;
+    current = nullptr;
+    printf("node %d childs %d arays %d words %d\n", nodes, chs, arrays, wss);
     return OK;
 }
 

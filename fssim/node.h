@@ -149,4 +149,7 @@ Node * findNode(Node * curr, Array* words, bool onlyDir);
 Node* getNode(char* path, bool onlyDir, bool currenWhenNoPath);
 char* getAbsoluteName(char* string, Node * node);
 
+int chs;
+int nodes;
+
 #endif /* NODE_H */
