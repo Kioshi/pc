@@ -62,6 +62,4 @@ void pop_front(Array* words);
 */
 void deleteWords(Array* words);
 
-int wss;
-int arrays;
 #endif /* ARRAY_H */

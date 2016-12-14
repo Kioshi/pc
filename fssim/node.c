@@ -18,7 +18,6 @@ Node * createNode(char name[257], Node* parent)
     memset(node->name, 0, 257);
     strcpy(node->name, name);
     node->childs = createChilds();
-    nodes++;
     return node;
 }
 
@@ -29,7 +28,6 @@ void removeNode(Node* curr)
 
     removeChilds(curr->childs, true);
     free(curr);
-    nodes--;
 }
 
 Childs* createChilds()
@@ -37,8 +35,6 @@ Childs* createChilds()
     Childs* childs = (Childs*)my_malloc(sizeof(Childs));
     childs->size = 0;
     childs->arr = nullptr;
-
-    chs++;
     return childs;
 }
 
@@ -75,7 +71,6 @@ char* getAbsoluteName(char* string, Node * node)
 Childs * copyAndSortChilds(Childs* old)
 {
     Childs* childs = (Childs*)my_malloc(sizeof(Childs));
-    chs++;
     int i;
     childs->size = old->size;
     childs->arr = (Node**)my_calloc(childs->size, sizeof(Node*));
@@ -141,7 +136,6 @@ void removeChilds(Childs* childs, bool removeNodes)
         free(childs->arr);
     childs->arr = nullptr;
     free(childs);
-    chs--;
 }
 
 bool isDir(Node * node)

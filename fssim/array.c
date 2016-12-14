@@ -6,7 +6,6 @@ Array* createArray()
     Array* arr = (Array*)my_malloc(sizeof(Array));
     arr->size = 0;
     arr->string = nullptr;
-    arrays++;
     return arr;
 }
 
@@ -56,7 +55,6 @@ void push_back(Array* words, char* s)
     string = (char*)my_calloc((strlen(s) + 1), sizeof(char));
     strcpy(string, s);
     words->string[words->size++] = string;
-    wss++;
 }
 
 void pop_front(Array* words)
@@ -77,7 +75,6 @@ void pop_front(Array* words)
         free(words->string);
         words->string = nullptr;
     }
-    wss--;
 }
 
 
@@ -91,10 +88,8 @@ void deleteWords(Array* words)
     for (i = 0; i < words->size; i++)
     {
         free(words->string[i]);
-        wss--;
     }
     if (words->string)
         free(words->string);
     free(words);
-    arrays--;
 }

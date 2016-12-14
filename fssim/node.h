@@ -147,9 +147,16 @@ Node * findNode(Node * curr, Array* words, bool onlyDir);
 * @return Returns node, can be null
 */
 Node* getNode(char* path, bool onlyDir, bool currenWhenNoPath);
-char* getAbsoluteName(char* string, Node * node);
 
-int chs;
-int nodes;
+/**
+* @fn char* getAbsoluteName(char* string, Node * node);
+*
+* @brief Recursively build absolute path
+* @param string Current name string
+* @param node Current node
+*
+* @return Returns absolute path string
+*/
+char* getAbsoluteName(char* string, Node * node);
 
 #endif /* NODE_H */
