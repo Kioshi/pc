@@ -4,10 +4,10 @@
 char * append(char* string, char c)
 {
     if (!string)
-        string = (char*)_calloc(2, sizeof(char));
+        string = (char*)my_calloc(2, sizeof(char));
     else
     {
-        char* tmp = (char*)_calloc(strlen(string) + 2, sizeof(char));
+        char* tmp = (char*)my_calloc(strlen(string) + 2, sizeof(char));
         memcpy(tmp, string, strlen(string));
         free(string);
         string = tmp;

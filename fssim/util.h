@@ -28,7 +28,7 @@ typedef enum
 } bool;
 
 /**
-* @fn void* _calloc(size_t count, size_t size);
+* @fn void* my_calloc(size_t count, size_t size);
 *
 * @brief Wrapper for calloc that will terminate program with proper error code if no memory is available
 *
@@ -36,17 +36,17 @@ typedef enum
 * @param size Size of allocated block
 * @return Pointer to newly allocated memory
 */
-void* _calloc(size_t count, size_t size);
+void* my_calloc(size_t count, size_t size);
 
 /**
-* @fn void* _malloc(size_t size);
+* @fn void* my_malloc(size_t size);
 *
 * @brief Wrapper for malloc that will terminate program with proper error code if no memory is available
 *
 * @param size Size of newly allocated memory
 * @return Pointer to newly allocated memory
 */
-void* _malloc(size_t size);
+void* my_malloc(size_t size);
 
 /* Return codes, for fatal errors */
 enum returnCodes

@@ -1,7 +1,7 @@
 #include "util.h"
 
 
-void* _calloc(size_t count, size_t size)
+void* my_calloc(size_t count, size_t size)
 {
     void* mem = calloc(count, size);
     if (mem == nullptr)
@@ -13,7 +13,7 @@ void* _calloc(size_t count, size_t size)
     return mem;
 }
 
-void* _malloc(size_t size)
+void* my_malloc(size_t size)
 {    
     void* mem = malloc(size);
     if (mem == nullptr)

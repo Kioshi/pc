@@ -13,7 +13,7 @@ void print(Node * node, bool last)
 
 Node * createNode(char name[257], Node* parent)
 {
-    Node* node = (Node*)_malloc(sizeof(Node));
+    Node* node = (Node*)my_malloc(sizeof(Node));
     node->parent = parent;
     memset(node->name, 0, 257);
     strcpy(node->name, name);
@@ -34,7 +34,7 @@ void removeNode(Node* curr)
 
 Childs* createChilds()
 {
-    Childs* childs = (Childs*)_malloc(sizeof(Childs));
+    Childs* childs = (Childs*)my_malloc(sizeof(Childs));
     childs->size = 0;
     childs->arr = nullptr;
 
@@ -44,7 +44,7 @@ Childs* createChilds()
 
 void addChild(Childs* childs, Node * node)
 {
-    Node** tmp = (Node**)_calloc(childs->size + 1, sizeof(Node*));
+    Node** tmp = (Node**)my_calloc(childs->size + 1, sizeof(Node*));
     if (childs->size > 0)
     {
         int i;
@@ -68,25 +68,27 @@ char* getAbsoluteName(char* string, Node * node)
     {
         string = append(string, node->name[i]);
     }
-    return string;    
+    return string;  
+    
 }
+
 Childs * copyAndSortChilds(Childs* old)
 {
-    Childs* childs = (Childs*)_malloc(sizeof(Childs));
+    Childs* childs = (Childs*)my_malloc(sizeof(Childs));
     chs++;
     int i;
     childs->size = old->size;
-    childs->arr = (Node**)_calloc(childs->size, sizeof(Node*));
+    childs->arr = (Node**)my_calloc(childs->size, sizeof(Node*));
 
     for (i = 0; i < childs->size; i++)
     {
+        char*a = nullptr;
+        char*b = nullptr;
         int j;
         for (j = 0; j < i; j++)
         {
-            char* a = append(nullptr,'/');
-            char* b = append(nullptr, '/');
-            a = getAbsoluteName(a,old->arr[i]);
-            b = getAbsoluteName(b,childs->arr[j]);
+            a = getAbsoluteName(nullptr,old->arr[i]);
+            b = getAbsoluteName(nullptr,childs->arr[j]);
             if (compare(a, b) < 0)
             {
                 int k;
@@ -97,7 +99,11 @@ Childs * copyAndSortChilds(Childs* old)
             }
             clear(a);
             clear(b);
+            a = nullptr;
+            b = nullptr;
         }
+        clear(a);
+        clear(b);
         if (j == i)
             childs->arr[j] = old->arr[i];
     }
@@ -147,24 +153,24 @@ void insert(Node* curr, Array* words)
 {
     int i;
     Node* n;
-    if (!words->size)
-        return;
-
-    for (i = 0; i < curr->childs->size; i++)
+    while (words->size > 0)
     {
-        Node* c;
-        c = curr->childs->arr[i];
-        if (strcmp(c->name, words->string[0]) == 0)
+        for (i = 0; i < curr->childs->size; i++)
         {
-            pop_front(words);
-            insert(c, words);
-            return;
+            Node* c;
+            c = curr->childs->arr[i];
+            if (strcmp(c->name, words->string[0]) == 0)
+            {
+                pop_front(words);
+                insert(c, words);
+                return;
+            }
         }
+        n = createNode(words->string[0], curr);
+        addChild(curr->childs, n);
+        curr = n;
+        pop_front(words);
     }
-    n = createNode(words->string[0], curr);
-    addChild(curr->childs, n);
-    pop_front(words);
-    insert(n, words);
 }
 
 Node * findNode(Node * curr, Array* words, bool onlyDir)
@@ -178,7 +184,7 @@ Node * findNode(Node * curr, Array* words, bool onlyDir)
     if (onlyDir && !isDir(curr))
         return curr;
 
-    currString = (char*)_calloc(strlen(words->string[0]) + 1, sizeof(char));
+    currString = (char*)my_calloc(strlen(words->string[0]) + 1, sizeof(char));
     strcpy(currString, words->string[0]);
     pop_front(words);
     while (strcmp(currString, "./") == 0 || strcmp(currString, ".") == 0)
@@ -191,7 +197,7 @@ Node * findNode(Node * curr, Array* words, bool onlyDir)
 
         pop_front(words);
         free(currString);
-        currString = (char*)_calloc(strlen(words->string[0]) + 1, sizeof(char));
+        currString = (char*)my_calloc(strlen(words->string[0]) + 1, sizeof(char));
         strcpy(currString, words->string[0]);
     }
 

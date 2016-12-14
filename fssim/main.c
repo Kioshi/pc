@@ -156,7 +156,6 @@ int main(int nr, char** args)
     removeNode(root);
     root = nullptr;
     current = nullptr;
-    printf("node %d childs %d arays %d words %d\n", nodes, chs, arrays, wss);
     return OK;
 }
 
