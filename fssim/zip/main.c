@@ -98,13 +98,16 @@ void load(FILE* in, void(function)(char*))
         {
             if (line)
             {
-                /*printf("%s\n",line);*/
                 function(line);
                 line = clear(line);
             }
         }
         else
             line = append(line, c);
+    }
+    if (line)
+    {
+        function(line);
     }
     line = clear(line);
 }
@@ -128,19 +131,16 @@ int main(int nr, char** args)
     }
 
     fs = fopen(args[1], "r");
-    commands = fopen(args[2], "r");
     if (!fs)
     {
-        if (commands)
-            fclose(commands);
         printf("Could not open filesystem file.\n");
         return NO_FILESYSTEM;
     }
+    commands = fopen(args[2], "r");
     if (!commands)
     {
         fclose(fs);
         printf("Could not open commands file.\n");
-        fclose(fs);
         return NO_COMMANDS;
     }
 
@@ -151,6 +151,8 @@ int main(int nr, char** args)
     load(commands, &parseCommand);
     fclose(commands);
     removeNode(root);
+    root = nullptr;
+    current = nullptr;
     return OK;
 }
 

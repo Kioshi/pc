@@ -1,28 +1,3 @@
-Protokol o uložení a kontrole semestrální práce
-
-Uložení práce na server se zdařilo.
-Spouštím kontrolní proceduru – viz výpis níže.
-Záznam o kontrole práce dle zadání č. 2 (Simulátor souborového systému), uživatel "smartine":
-
-+ Archiv ZIP ................................................ OK
-+ Dokumentace v PDF ......................................... OK
-+ Nástroj splint neodhalil žádné závažné problémy ........... OK
-
-* Spouštění sestavení programu nástrojem make:
-gcc -c -g -Wall -pedantic -ansi -Wno-unknown-pragmas main.c -o main.o gcc -c -g -Wall -pedantic -ansi -Wno-unknown-pragmas node.c -o node.o gcc -c -g -Wall -pedantic -ansi -Wno-unknown-pragmas string.c -o string.o gcc -c -g -Wall -pedantic -ansi -Wno-unknown-pragmas array.c -o array.o gcc -c -g -Wall -pedantic -ansi -Wno-unknown-pragmas fssim.c -o fssim.o gcc -c -g -Wall -pedantic -ansi -Wno-unknown-pragmas util.c -o util.o gcc main.o node.o string.o array.o fssim.o util.o -o fssim.exe -lm 
-+ Nástroj make sestavil program bez problémů ................ OK
-+ Spustitelný soubor fssim.exe vytvořen ..................... OK
-
-* Spouštění programu: fssim.exe w3-files.txt w3-commands.txt
-+ Exit kód programu: 0
-+ Program spuštěn v: 20:21:31
-+ Program ukončen v: 20:21:34
-+ Program zpracováním vstupu vytvořil požadovaný výstup ..... OK
-
-* Spouštění analyzátoru správnosti výsledku:
-Váš program nepracuje správně – výpisy neodpovídají správné činnosti předaných příkazů
-nad specifikovaným souborovým systémem. Další možnost je, že nebyl dodržen předepsaný formát výpisu...
-Toto je výstup Vašeho programu (pro kontrolu):
 $pwd
 /
 $cd
@@ -601,11 +576,3 @@ $find irb2.* /usr/bin/
 $find *.3 /usr/bin/
 /usr/bin/irb2.3
 /usr/bin/ruby2.3
-node 0 childs 0 arays 0 words 0
-
-Vaše práce testem správnosti neprošla!
-Kontrolní procedura ukončena.
-
-Vaše práce testem správnosti neprošla!
-
-OK

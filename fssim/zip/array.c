@@ -3,7 +3,7 @@
 
 Array* createArray()
 {
-    Array* arr = (Array*)_malloc(sizeof(Array));
+    Array* arr = (Array*)my_malloc(sizeof(Array));
     arr->size = 0;
     arr->string = nullptr;
     return arr;
@@ -41,7 +41,7 @@ Array* toArray(char* string)
 
 void push_back(Array* words, char* s)
 {
-    char** tmp = (char**)_calloc((size_t)(words->size + 1), sizeof(char*));
+    char** tmp = (char**)my_calloc((size_t)(words->size + 1), sizeof(char*));
     char* string;
     if (words->string)
     {
@@ -52,7 +52,7 @@ void push_back(Array* words, char* s)
         words->string = nullptr;
     }
     words->string = tmp;
-    string = (char*)_calloc((strlen(s) + 1), sizeof(char));
+    string = (char*)my_calloc((strlen(s) + 1), sizeof(char));
     strcpy(string, s);
     words->string[words->size++] = string;
 }

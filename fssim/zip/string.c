@@ -4,10 +4,10 @@
 char * append(char* string, char c)
 {
     if (!string)
-        string = (char*)_calloc(2, sizeof(char));
+        string = (char*)my_calloc(2, sizeof(char));
     else
     {
-        char* tmp = (char*)_calloc(strlen(string) + 2, sizeof(char));
+        char* tmp = (char*)my_calloc(strlen(string) + 2, sizeof(char));
         memcpy(tmp, string, strlen(string));
         free(string);
         string = tmp;
@@ -25,8 +25,8 @@ char * clear(char* string)
 
 int getGroup(char c)
 {
-    if (c == '/')
-        return 0;
+    /*if (c == '/')
+        return 0;*/
     if (c >= 'a' && c <= 'z')
         return 1;
     if (c >= 'A' && c <= 'Z')
@@ -48,7 +48,6 @@ int wordLen(size_t start, char * string)
 		}
     }
     return i - start;
-
 }
 
 int compare(char * a, char * b)
@@ -56,6 +55,12 @@ int compare(char * a, char * b)
     size_t i;
     for (i = 0; i < strlen(a) && i < strlen(b); i++)
     {
+        char x,y;
+        if (strlen(a) < strlen(b))
+            return -1;
+        if (strlen(a) > strlen(b))
+            return +1;
+
         if (a[i] != '/' || b[i] != '/')
         {
             int la, lb;
@@ -68,7 +73,6 @@ int compare(char * a, char * b)
                 return 1;
             }
         }
-        char x, y;
         if (a[i] == b[i])
             continue;
 

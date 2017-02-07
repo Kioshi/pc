@@ -1,0 +1,182 @@
+pwd
+cd
+pwd
+cd /usr/bin/
+pwd
+cd /
+pwd
+cd /hodne/dlouha/cesta/do/adresare/
+pwd
+cd /neexistuje/
+pwd
+cd /usr/bin/neexistuje/
+pwd
+cd /hodne/dlouha/cesta/do/adresare/neexistuje/
+pwd
+cd /soubor
+pwd
+cd /usr/bin/soubor
+pwd
+cd /hodne/dlouha/cesta/do/adresare/soubor
+pwd
+cd /souborNeni
+pwd
+cd /usr/bin/souborNeni
+pwd
+cd /hodne/dlouha/cesta/do/adresare/souborNeni
+pwd
+cd /usr/bin/
+pwd
+cd ../bin/
+pwd
+cd ../../
+pwd
+cd hodne/dlouha/cesta/do/adresare/
+pwd
+cd ../../../../../
+pwd
+cd hodne/dlouha/cesta/do/adresare/
+pwd
+cd ../../../../../hodne/dlouha/cesta/do/adresare/
+pwd
+cd /
+pwd
+cd ../
+pwd
+cd hodne/dlouha/cesta/do/adresare/
+pwd
+cd ../../../../../../hodne/dlouha/cesta/do/adresare/
+pwd
+cd /usr/
+pwd
+cd ../soubor
+pwd
+cd ../souborNeni
+pwd
+cd /
+pwd
+cd usr/bin/
+pwd
+cd ../../
+pwd
+cd usr/Bin/
+pwd
+cd ../../
+pwd
+cd Usr/Bin/
+pwd
+cd /hodne/dlouha/cesta/do/adresare/
+pwd
+ls
+ls /usr/bin/
+ls /
+ls /hodne/dlouha/cesta/do/adresare/
+ls /neexistuje/
+ls /usr/bin/neexistuje/
+ls /hodne/dlouha/cesta/do/adresare/neexistuje/
+ls /soubor
+ls /usr/bin/soubor
+ls /hodne/dlouha/cesta/do/adresare/soubor
+ls /souborNeni
+ls /usr/bin/souborNeni
+ls /hodne/dlouha/cesta/do/adresare/souborNeni
+cd /usr/bin/
+ls ../bin/
+cd /hodne/dlouha/cesta/do/adresare/
+ls ../../../../../
+cd /hodne/dlouha/cesta/do/adresare/
+ls ../../../../../hodne/dlouha/cesta/do/adresare/
+cd /
+ls ../
+cd hodne/dlouha/cesta/do/adresare/
+ls ../../../../../../hodne/dlouha/cesta/do/adresare/
+cd /usr/
+ls ../soubor
+ls ../souborNeni
+ls /usr/bin/
+ls /usr/Bin/
+ls /Usr/Bin/
+ls /usr/bin/bla/
+ls /tmp/
+cd /
+cp
+ls
+cp /tmp/neexistuje
+ls
+cp /usr/bin/bla/
+ls
+cp /tmp/a
+ls
+ls /tmp/
+cp /a /tmp/
+ls /a
+ls /tmp/
+cd /tmp/b/
+cp ../a
+ls ../a
+ls
+cp a ../
+ls
+ls ../
+cp /sort/ab /usr/bin/
+ls /sort/ab
+ls /usr/bin/
+cp /sort/ab /usr/bin/
+ls /sort/ab
+ls /usr/bin/
+cp /sort/bc ../
+ls /sort/bc
+ls ../
+cp /sort/DE /sort/
+ls /sort/DE
+ls /sort/
+cd /
+ls
+mv
+ls
+mv /tmp/neexistuje
+ls
+mv /usr/bin/bla/
+ls
+mv /tmp/a
+ls
+ls /tmp/
+mv /a /tmp/
+ls /
+ls /tmp/
+cd /tmp/b/
+mv ../a
+ls ../
+ls
+mv a ../
+ls
+ls ../
+mv /sort/ab /usr/bin/
+ls /sort/
+ls /usr/bin/
+mv /sort/ab /usr/bin/
+ls /sort/
+ls /usr/bin/
+mv /sort/bc ../
+ls /sort/
+ls ../
+mv /sort/DE /sort/
+ls /sort/
+cd /usr/bin/
+find
+find soubor
+find so*or
+find *or
+find sou*
+find irb2.3
+find irb2.*
+find *.3
+cd /hodne/dlouha/cesta/do/adresare/
+find /usr/bin/
+find soubor /usr/bin/
+find so*or /usr/bin/
+find *or /usr/bin/
+find sou* /usr/bin/
+find irb2.3 /usr/bin/
+find irb2.* /usr/bin/
+find *.3 /usr/bin/

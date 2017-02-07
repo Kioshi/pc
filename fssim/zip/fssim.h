@@ -11,9 +11,6 @@
 * @brief Contains simulated commands
 */
 
-extern Node* root;
-extern Node* current;
-
 /**
 * @fn void errNoArgs();
 *

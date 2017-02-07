@@ -81,3 +81,4 @@ find *or /usr/bin/
 find sou* /usr/bin/
 find irb2.3 /usr/bin/
 find irb2.* /usr/bin/
+find *.3 /usr/bin/
