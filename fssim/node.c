@@ -1,6 +1,11 @@
 #include "node.h"
 #include "string.h"
 
+/* Pointer to root */
+Node* root;
+/* Pointer to current node */
+Node* current;
+
 void print(Node * node, bool last)
 {
     if (node->parent)
@@ -68,40 +73,26 @@ char* getAbsoluteName(char* string, Node * node)
     
 }
 
+int cmp(const void* pA, const void* pB)
+{
+    Node* nA = *(Node**)pA;
+    Node* nB = *(Node**)pB;
+    char*a = getAbsoluteName(nullptr, nA);
+    char*b = getAbsoluteName(nullptr, nB);
+    int res = compare(a, b);
+    clear(a);
+    clear(b);
+
+    return res;
+}
+
 Childs * copyAndSortChilds(Childs* old)
 {
     Childs* childs = (Childs*)my_malloc(sizeof(Childs));
-    int i;
     childs->size = old->size;
     childs->arr = (Node**)my_calloc(childs->size, sizeof(Node*));
-
-    for (i = 0; i < childs->size; i++)
-    {
-        char*a = nullptr;
-        char*b = nullptr;
-        int j;
-        for (j = 0; j < i; j++)
-        {
-            a = getAbsoluteName(nullptr,old->arr[i]);
-            b = getAbsoluteName(nullptr,childs->arr[j]);
-            if (compare(a, b) < 0)
-            {
-                int k;
-                for (k = childs->size - 1; k > j; k--)
-                    childs->arr[k] = childs->arr[k-1];
-                childs->arr[j] = old->arr[i];
-                break;
-            }
-            clear(a);
-            clear(b);
-            a = nullptr;
-            b = nullptr;
-        }
-        clear(a);
-        clear(b);
-        if (j == i)
-            childs->arr[j] = old->arr[i];
-    }
+    memcpy(childs->arr, old->arr, old->size * sizeof(Node*));
+    qsort(childs->arr, childs->size, sizeof(Node*), cmp);
 
     return childs;
 }
@@ -147,7 +138,8 @@ void insert(Node* curr, Array* words)
 {
     int i;
     Node* n;
-    while (words->size > 0)
+    /*while (words->size > 0)*/
+    if (words->size > 0)
     {
         for (i = 0; i < curr->childs->size; i++)
         {
@@ -162,9 +154,12 @@ void insert(Node* curr, Array* words)
         }
         n = createNode(words->string[0], curr);
         addChild(curr->childs, n);
-        curr = n;
+        /*curr = n;*/
         pop_front(words);
     }
+    else
+        return;
+    insert(n, words);
 }
 
 Node * findNode(Node * curr, Array* words, bool onlyDir)

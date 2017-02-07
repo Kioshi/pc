@@ -26,9 +26,9 @@ struct node
 typedef struct node Node;
 
 /* Pointer to root */
-Node* root;
+extern Node* root;
 /* Pointer to current node */
-Node* current;
+extern Node* current;
 
 /**
 * @fn void print(Node * node, bool last);
@@ -78,9 +78,20 @@ Childs* createChilds();
 void addChild(Childs* childs, Node * node);
 
 /**
+* @fn int cmp(const void* pA, const void* pB);
+*
+* @brief Comparator function for qsort which extract Nodes, their absolute names and uses compare function on them.
+* @param pA const pointer to Node** array
+* @param pB const pointer to Node** array
+*
+* @return Returns result of compare function with nodes absolute name.
+*/
+int cmp(const void* pA, const void* pB);
+
+/**
 * @fn Childs * copyAndSortChilds(Node*curr);
 *
-* @brief Make shallow copy of childs sorted by names
+* @brief Make shallow copy of childs sorted by names, as sorting algorithm is used qsort from C standard library
 * @param childs Childs to copy
 *
 * @return Return shallow copy of childs

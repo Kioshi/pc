@@ -131,19 +131,16 @@ int main(int nr, char** args)
     }
 
     fs = fopen(args[1], "r");
-    commands = fopen(args[2], "r");
     if (!fs)
     {
-        if (commands)
-            fclose(commands);
         printf("Could not open filesystem file.\n");
         return NO_FILESYSTEM;
     }
+    commands = fopen(args[2], "r");
     if (!commands)
     {
         fclose(fs);
         printf("Could not open commands file.\n");
-        fclose(fs);
         return NO_COMMANDS;
     }
 

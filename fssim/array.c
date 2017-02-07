@@ -86,9 +86,7 @@ void deleteWords(Array* words)
         return;
 
     for (i = 0; i < words->size; i++)
-    {
         free(words->string[i]);
-    }
     if (words->string)
         free(words->string);
     free(words);
